@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="html/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="icon" href="logo.webp" type="image/webp">
+    <link rel="shortcut icon" href="logo.webp">
+    <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }</style>
+    <title>Instalación de Python</title>
+</head>
+    
+<body>
+    
+    <header>
+        <h1 class="index-title">Instalación de Python</h1>
+    </header>
+
+    <main>
+        
+        <section>
+            <h2 class="index-title">¿Requerimientos?</h2>
+            
+            <p>
+                Solo que sea PC/MAC de 64 bits el procesador y el Sistema preferiblemente. No requerís una PC Gamer para la programación, basta que bootee.
+                Incluso si tenes esa única netbook que venia con procesador de 32bit te sirve, aunque puede que ciertas cosas no se puedan hacer por requerir 64bits.
+                O la otra PC que llevas todo el tiempo en la mano, por lo menos para escribir programas sirve, luego para ejecutarlos usamos una web u otra PC. 
+            </p>
+            
+            <ul>
+                <li><strong>Android:</strong>
+                    <ul>
+                        <li><a href="https://play.google.com/store/apps/details?id=ru.iiec.pydroid3&hl=en-US" target="_blank">PyDroid</a></li>
+                        <li><a href="https://play.google.com/store/apps/details?id=org.qpython.qpy3&hl=es-419&pli=1" target="_blank">QPython 3L</a></li>
+                    </ul>
+                </li>
+                
+                <li><strong>IPhone:</strong>
+                    <ul>
+                        <li><a href="https://apps.apple.com/es/app/pyto-ide/id1436650069" target="_blank">Pyto IDE</a></li>
+                        <li><a href="https://apps.apple.com/us/app/juno-python-and-jupyter/id1462586500" target="_blank">Juno</a></li>
+                    </ul>
+                </li>
+                
+                <li><strong>Online:</strong>
+                    <ul>
+                        <li><a href="https://colab.research.google.com/" target="_blank">Google Colab</a></li>
+                    </ul>
+                </li>
+                
+                <li><strong>PC/MAC:</strong>
+                    <ul>
+                        <li><a href="https://jupyter.org/" target="_blank">Jupyter Notebook</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+       
+        <section>
+            <h2 class="index-title">Como instalar Python en PC con Windows</h2>
+            
+            <ul>
+                <li><a href="https://www.python.org/downloads/windows/" target="_blank">Python para Windows</a></li>
+            </ul>
+            
+            <p>
+                Al ejecutar el instalador seleccionar la opción <strong>Add Python n.x to PATH</strong>: 
+            </p>
+        </section>
+
+        <section>
+            <h2 class="index-title">Como instalar Python en PC con Linux</h2>
+            
+            <p>No hace falta ya está ahí!</p>
+            
+            <p>
+                Pero si es una máquina virtual de WSL (Windows Subsystem Linux) disponible en win10 y 11
+                mediante:
+            </p>
+            
+            <pre><code>wsl --install</code></pre>
+            
+            <p>
+                En la Terminal o PowerShell requiere reiniciar la pc, al ser una VM no trae todo, así que hay que instalar algunas dependencias y editores.
+                Tras iniciar Ubunutu ejecuta:
+            </p>
+            
+            <pre><code>sudo apt update && sudo apt upgrade -y && sudo apt install -y python3-venv python3-pip thonny code idle</code></pre>
+            
+            <p>Thonny IDE es un editor de código que te sirve para Python como para <a href="https://micropython.org/" target="_blank">MicroPython</a> (Python para <a href="https://micropython.org/download/?" target="_blank">microcontroladores</a>), 
+                Code es Visual Studio Code, Idle es el editor de Python,
+                lo único necesario en realidad. pero es cuestión de gustos y comodidad.
+            </p>
+        </section>
+
+        <section>
+            <h2 class="index-title">Entorno Virtual: Cómo levantar uno</h2>
+            
+            <p>Así es como se trabaja en Python desde <a href="https://peps.python.org/pep-0668/" target="_blank">PEP668</a>, de esta forma no estropeas tu sistema,
+               experimentas con tranquilidad, te deshaces de la basura acumulada al finalizar un proyecto, para reducirlo al mínimo necesario, y no guardarlo con todo lo que probaste y no funcionó.
+               Además evitas quedarte con paquetes antiguos, no rompes ninguna aplicación de uso habitual que venga preinstalada o hayas instalado en el sistema tales como blender, GIMP, Inkscape, FreeCAD, KiCAD, Calibre, Anaconda Navigator,
+                QGIS, Autodesk Maya, ArcGis Pro, etc. Además de actualizar librerías como NumPy, SciPy y quedarte con versiones viejas que puedan causar conflictos.
+            </p>
+            
+            <h3 class="index-title">En Windows:</h3>
+            
+            <blockquote>En Windows, si nunca metiste mano, es probable que aun tengas la política de ejecución de Scripts de PowerShell desactivada
+                y para que esto funcione como muchas otras cosas, debes activarla, Abris PowerShell o Terminal como Administrador e ingresas:
+                <code class="cmd">Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</code>
+                reinicias la pc y listo.
+            </blockquote>
+            
+            <p>Abrimos una Terminal y escribimos:</p>
+            <pre><code>python3 -m venv .ami</code></pre> 
+            
+            <p>Esto levantará un entorno virtual llamado <strong>ami</strong> en una carpeta oculta, de ahí el punto adelante, el cuál estará en el home de tu usuario.
+            Para activarlo debemos escribir:</p> 
+            
+            <pre><code>.ami\Scripts\activate</code></pre> 
+            
+            <p>
+                Veremos que la terminal cambia agregando <code class="cmd">(.ami)</code> a lo que normalmente muestra que es <code class="cmd">PS C:\Users\usuario></code>.
+                Por lo tanto veremos: <code class="cmd">(.ami) PS C:\Users\usuario></code>.
+            </p>
+            
+            <p>
+                A partir de aquí podremos instalar las dependencias de nuestro proyecto, que solo sabremos tras investigar
+                o por ser siempre reutilizadas(En estos casos armaremos un script que instale todo) a través de <strong>pip</strong> 
+                que es el gestor de paquetes(Librerías en C y otros lenguajes).
+            </p>
+            <p><strong>Ejemplo:</strong></p>
+            
+            <pre><code>pip install matplotlib</code></pre> 
+            
+            <p>
+                Detalle a tener en cuenta <strong>SIEMPRE</strong> la primera vez que ejecutamos pip, pese a recién haberla instalado,
+            tendrá una actualización y nos indicara el comando de actualización, es solo copiarlo y pegarlo para recibir la actualización. 
+            </p>
+            <br>
+            <h3 class="index-title">En Linux o WSL:</h3>
+
+            <p>Abrimos una Terminal y escribimos:</p>
+            <pre><code>python3 -m venv .ami</code></pre> 
+            
+            <p>
+                Esto levantará un entorno virtual llamado <strong>ami</strong> en una carpeta oculta, de ahí el punto adelante, el cuál estará en el home de tu usuario.
+                Para activarlo debemos escribir:
+            </p> 
+            
+            <pre><code>source .ami/bin/activate</code></pre> 
+            
+            <p>
+                Veremos que la terminal cambia agregando <code class="cmd">(.ami)</code> a lo que normalmente muestra que es <code class="cmd">user@hostname:~$</code>.
+                Por lo tanto veremos: <code class="cmd">(.ami) user@hostname:~$</code>.
+            </p>
+            
+            <p>
+                A partir de aquí podremos instalar las dependencias de nuestro proyecto, que solo sabremos tras investigar
+                o por ser siempre reutilizadas(En estos casos armaremos un script que instale todo) a través de <strong>pip</strong>
+                que es el gestor de paquetes(Librerías en C y otros lenguajes).
+            </p>
+            
+            <p><strong>Ejemplo:</strong></p>
+            
+            <pre><code>pip install matplotlib</code></pre> 
+            
+            <p>
+                Detalle a tener en cuenta <strong>SIEMPRE</strong> la primera vez que ejecutamos pip, pese a recién haberla instalado, 
+                tendrá una actualización y nos indicara el comando de actualización, es solo copiarlo y pegarlo para recibir la actualización. 
+            </p>
+            <br>
+            <h3 class="index-title">Cómo desactivamos el entorno?</h3>
+            
+            <p>Escribiendo:</p>
+            
+            <pre><code>deactivate</code></pre> 
+            
+            <p>Esto es para ambos sistemas operativos.</p>
+            
+            <ul>
+                <li><a href="https://docs.python.org/3/library/venv.html" target="_blank">Documentación acerca de la creación de entornos virtuales</a></li>
+            </ul>
+        </section>
+        
+        <section>
+            <h3 class="index-title">Si buscas conocer más:</h3>
+            <ul>
+                <li><a href="https://wiki.python.org/moin/BeginnersGuide" target="_blank">Beginner's Guide: (Clic derecho traducir)</a></li>
+                <li><a href="https://docs.python.org/3/tutorial/index.html" target=_blank">Python Tutorial oficial</a></li>
+                <li><a href="https://docs.python.org/3/" target="_blank">Documentación oficial(Clic derecho traducir)</a></li>
+            </ul>
+        </section>
+            
+    </main>
+            
+    <footer class="nav-footer">
+        <a class="nav-btn" href="index.html">Home</a>
+    </footer>
+    
+    <footer class="index-footer">
+        <div class="footer-bottom">
+            <p>&copy; <span id="current-year">2025</span> - El Club de Python de AMI - Universidad Nacional de Moreno</p>
+            <p class="footer-sub">Todos los derechos reservados</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        const menuToggle = document.querySelector('.menu-toggle');
+        const closeMenu = document.querySelector('.close-menu');
+        const sidebar = document.querySelector('.sidebar');
+        const menuOverlay = document.querySelector('.menu-overlay');
+
+        if (menuToggle && closeMenu && sidebar && menuOverlay) {
+            
+            menuToggle.addEventListener('click', () => {
+                sidebar.classList.add('active');
+                menuOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden'; 
+            });
+        
+            closeMenu.addEventListener('click', () => {
+                sidebar.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        
+            menuOverlay.addEventListener('click', () => {
+                sidebar.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        
+            const sidebarLinks = document.querySelectorAll('.sidebar-links a');
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth <= 1024) {
+                        sidebar.classList.remove('active');
+                        menuOverlay.classList.remove('active');
+                        document.body.style.overflow = '';
+                    }
+                });
+            });
+        }
+    </script>
+</body>
+</html>

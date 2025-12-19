@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Introducción práctica a Python</title>
+<link rel="icon" href="logo.webp" type="image/webp">
+    <link rel="shortcut icon" href="logo.webp">
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<div class="cell markdown" id="eOPIXaqCRc4r">
+    <h1 class="doc-title">Introducción práctica a Python para estudiantes de ingeniería</h1>
+    <p class="doc-subtitle">Usuarios de C</p>
+
+    <div style="text-align:center">
+        <img src="https://docs.python.org/3/_static/og-image.png" alt="Python" width="200">
+    </div>
+
+
+<div> 
+            <h2>Mostrar mensaje en pantalla:</h2>
+</div>
+
+    <p>
+        Python nos permite mostrar mensajes en pantalla mediante la
+    función: <code class="cmd">print()</code> en la cual podemos escribir un simple
+    texto entre comillas dentro de los paréntesis, pero en nuestro caso,
+    habrá mensajes más interesantes que requieren <b>variables</b> o
+    <b>constantes</b> como el número <b>PI</b> por ejemplo. Para esto,
+    existe una convención al declarar variables: aunque para el lenguaje
+    todas son variables, las constantes no existen en Python , pero entre humanos, al leer un código ajeno, por
+    "educación" las variables son escritas en minúsculas, mientras que las
+    "CONSTANTES" son escritas en mayúsculas. En este lenguaje, para los que
+    conocen <b>C</b>, no hace falta declarar el tipo de dato de la
+    variable, el intérprete, lo clasifica automáticamente, lo que
+    no quiere decir que no existan. Además, estas no deben ser
+    obligatoriamente declaradas al inicio: podemos ir inventándolas a medida
+    que las requerimos. Sin embargo, la ejecución del código es secuencial
+    (de arriba hacia abajo), y no podemos pretender invocar algo que aún no
+    existe. Usaremos <b>f-strings</b> para un print más legible al indicar
+    las variables o CONSTANTES, es muy simple, sólo requiere agregar la
+    letra <b>f</b> antes de las comillas, esto nos permite mezclar, por así
+    decirlo, el texto con las variables/CONSTANTES al encerrar estas entre
+    llaves a medida que nuestro texto lo disponga. 
+    </p>
+
+    <p>
+        <b>Ej:</b>
+    </p>
+
+    <pre><code class="code-block">print(f"La pendiente es: {m}")</code></pre>
+
+    <p>
+        Entonces, podemos comenzar declarando algunas variables:
+    </p> 
+
+    <pre><code class="code-block"><!--
+--># Declaramos algunas variables y una CONSTANTE.
+# Así indicamos comentarios de una línea que no serán ejecutados por el intérprete.
+MENSAJE="Python para Mates!"
+y="f(x)"
+m=3.5
+b=2
+print(f"{MENSAJE}")
+print("") # Así realizamos un salto de línea, aunque como en C podríamos usar \n
+print(f"Una función lineal se expresa de la siguiente manera: {y}={m}x + {b}")</code></pre> 
+
+    <p>
+        Ahora podes escribir ese trozo de código en una nueva celda de <b>Código</b> y ejecutarla con
+        <b>Ctrl+Enter</b>
+        Por último, debes saber que en Python los espacios <b>si importan</b>, 4 espacios por convención, 
+        son los que debes respetar al indentar código, en este primer ejemplo no te preocuparás por ellos.
+    </p>
+<pre><code class="code-block"></code></pre>
+</div>
+
+<div class="cell markdown" id="-KMZUWlegWXd">
+
+<div>
+    <h1>Entrada de usuario y bucles:</h1>
+    
+    <p>
+        Como dijimos que declarábamos variables, pero en realidad indicamos un valor fijo, ahora pediremos al usuario el ingreso de datos. Esto lo realizamos con la función <code class="cmd">input()</code> que le pedirá al usuario que ingrese lo pedido mediante el <b>string</b> el cual es una cadena de caracteres, encerrada entre comillas. Pero a diferencia de <b>print()</b> lo guardaremos inmediatamente en una variable (A partir de ahora no haré diferencia entre variable y CONSTANTE por cuestiones de lectura). <code class="cmd">input()</code> nos devuelve siempre un <b>string</b>, sea lo que sea que ingrese el usuario. Nosotros debemos hacer la operación de conversión <b>(cast)</b> al tipo de datos que realmente requerimos. En nuestro caso usaremos <code class="cmd">float()</code>(<i>decimal</i>). De esta manera, podemos presentar un entero como un decimal (1.0) y a la vez, manejar decimales.
+    </p>
+    
+    <p>
+        Por otro lado, iniciaremos con la teoría de bucles, los cuales se utilizan para realizar una tarea repetidas veces. Pueden ser:
+    </p>
+    <ul>
+        <li>Si se cumple una condición: <code class="cmd">if condición:</code>. Evalúa una condición que puede ser <b>booleana:</b> (<code class="cmd">True</code> o <code class="cmd">False</code>), si una variable es menor <code class="cmd"><</code> o mayor <code class="cmd">></code> a otra, si son iguales <code class="cmd">==</code> o distintas <code class="cmd">!=</code> (Comparadores). Existen más condiciones a evaluar: ¡es cuestión de curiosidad!.</li>
+    
+        <li>
+            Mientras se dé la condición: <code class="cmd">while condición:</code>. A veces también se usa la lógica inversa(operador lógico not), mientras no se dé la condición: <code class="cmd">while not condición:</code>.
+        </li>
+    
+        <li>
+            Una determinada cantidad de veces: <code class="cmd">for i in range(4):</code>. La variable <code class="cmd">i</code> (de iterator), permitirá almacenar el valor devuelto por la función <code class="cmd">range()</code>, que nos devuelve los valores de 0 a 3. Por lo tanto, nos permite realizar la tarea <b>4 veces</b>, tras lo cual el bucle habrá terminado. Observá que ingresamos un 4, pero nos devuelve siempre 4 posiciones (0, 1, 2,  3)
+        </li>
+    </ul>
+
+    <ul>
+        <li>
+            El bucle <code class="cmd">for iterador in algo_iterable:</code>, no solo usa <b>range()</b>. También puede iterar en otros tipos de datos como secuencias:
+            <ul>
+                <li><b>Listas:</b> <code class="cmd">lista=["mate", "yerba", "azucar", 1, 3.4, 8, 8, "derivadas"]</code></li>
+                <li><b>Tuplas:</b> <code class="cmd">tupla=(12,"integrales")</code>.Estas, a diferencia de las listas, no se pueden modificar una vez declaradas.</li>
+                <li><b>Strings:</b> <code class="cmd">texto="Unos mates y el Teorema de valor medio (Lagrange)"</code></li>
+                <li><b>Rangos</b> generados por <code class="cmd">range()</code> que solo acepta enteros, ya descrito</li>
+            </ul>
+        </li>
+    </ul>
+
+    <ul>
+        <li><b>Las colecciones, existen 2 tipos:</b>
+            <ul>
+                <li><b>Diccionarios:</b> Este es simple, en un diccionario que vas a buscar? Una palabra y su definición!.
+                  Ejemplo: <code class="cmd">funciones = {"Lineal": "y=mx+b", "Cuadrática":"ax<sup>2</sup>+bx+c","Polinomica":"ax<sup>impar</sup>+bx<sup>par</sup>+cx<sup>impar</sup>+...+d"}</code></li>
+                <li><b>Sets:</b> Conjuntos de elementos desordenados, que no admiten elementos duplicados <code class="cmd">conjunto = {1, "uno", "phi", 99}</code></li>
+            </ul>
+        </li>
+    </ul>
+    <br>
+
+    <p>Al realizar tareas repetitivas, normalmente las convertimos en funciones. En Python existen 2 tipos:</p>
+
+    <ul>
+        <li><b>Anónimas</b> o <b>lambda</b>: que no poseen nombre y se usan para tareas simples. Ejemplo: <code class="cmd">f = lambda x,m,b: m * x + b</code></li>
+        <li>Y las que si tienen nombre y usan la sintaxis: <code class="cmd">def nombre(parámetros):</code>. Nuestra función puede o no requerir parámetros, así se llaman a las variables requeridas por una función, también llamadas argumentos y las funciones pueden devolver <code class="cmd">return</code> algo o no devolver nada, dependiendo de lo que realicen.</li>
+    </ul>
+
+    <p>
+        Ahora vamos a armar un segundo programa en el que apliquemos todo lo mencionado. 
+        Indicaremos mediante un mensaje al usuario que ingrese la pendiente (que verificaremos con un bucle <b>while</b>) 
+        y la ordenada al origen de una función lineal. 
+        Guardaremos la ecuación en variables <code class="cmd">m</code> y <code class="cmd">b</code>. 
+        También le pediremos un valor para evaluarla, el cual guardaremos en <code class="cmd">x</code>. 
+        Además, mostraremos en pantalla su función y el resultado de la evaluación pedida. 
+        Como extra, le daremos los valores de los <code class="cmd">x</code> previos, 
+        para utilizar <code class="cmd">range()</code> con un bucle <code class="cmd">for</code>. 
+        Pero como <b>range()</b> solo trabaja con números enteros (<b>int</b>), debemos castear la <b>x</b>:<code class="cmd">int(x)</code>. 
+        Mediante el uso del bucle <code class="cmd">if</code>, nos aseguraremos de que si el usuario ingresa una pendiente distinta de cero, 
+        nos saldremos del <b>while</b>. Si continúa ingresando cero, le pediremos nuevamente el valor de la pendiente.
+    </p>
+
+    <p>
+        El bucle <b>if</b> tiene una forma reducida llamada operador ternario. 
+        En la que usamos una sola línea de código para evaluar la condición con la siguiente sintaxis:
+    </p> 
+        <pre><code class="code-block">(valor si es True) if condición else (valor si es False)</code></pre>
+    <p>
+        De esta manera evitamos escribir:
+    </p>
+    <pre><code class="code-block"><!-- 
+-->if condición:
+    hace algo
+else:
+    no hace nada</code></pre>
+
+    <p>
+        No necesariamente debe o no hacer algo, es solo un ejemplo. 
+        El <code class="cmd">else</code> se utiliza cuando queremos que, si no se cumple la condición del <code class="cmd">if</code>, suceda otra tarea o indique un mensaje.
+        El bucle <b>if</b> se puede anidar. Te podés encontrar con la siguiente sintaxis:
+    </p>
+    
+    <ul>
+        <li><code class="cmd"> if ...else</code></li>
+        <li><code class="cmd"> if ...if ...else</code></li>
+        <li><code class="cmd"> if ...else if ...else</code></li>
+        <li>O su forma abreviada: <code class="cmd"> if ...elif ...else</code></li>
+        <li><b><i>¡Ejercitar la curiosidad!.</i></b></li>
+    </ul>
+
+<h2>El programa:</h2>
+
+    <pre><code class="code-block"><!--
+-->print("A continuación ingrese lo solicitado para evaluar una función lineal")
+
+while True:
+    m = float(input("\n¿Cuál es la pendiente de su función?: "))
+    if m != 0:
+        break
+    print("\nPor favor, la pendiente de una función lineal no puede ser cero!\n")
+
+b = float(input("\n¿Cuál es la ordenada al origen?: "))
+x = float(input("\nIndique que valor desea evaluar en la función: "))
+
+# Definimos la función
+def lineal(m, x, b):
+    return m * x + b
+
+# Llamamos a la función y la guardamos en una variable
+y = lineal(m, x, b)
+
+# Mostramos la ecuación, usamos \t para tabular el texto.
+print(f"\t\nLa función ingresada es: f(x) = {m}x + {b}\n")
+print(f"\t Si evaluamos la función en f({x})={m}{x}+{b}\n")
+print(f"\t Su resultado es: f({x})={y}\n")
+print("")
+
+# Le mostramos al usuario los resultados de evaluar los valores anteriores al que indicó para evaluar.
+print("\n Estos son los valores de la función para los x anteriores a tu elección, desde 0 a x", (int(x) -1) if x > 0 else (int(x) + 1))
+
+"""
+En la línea anterior no usamos f-string,
+presentamos el texto, y separado por la coma el valor que nos devuelve
+el operador ternario,
+si x es positivo (x - 1) o negativo (x + 1).
+Además, vemos esta nueva sintaxis, comillas triples, 
+esto es un string literal usado normalmente para definir docstrings,
+es decir, strings de documentación de funciones, clases o módulos.
+"""
+
+if x > 0:
+    for i in range(int(x)):
+        print(f"f({i}) = {lineal(m, i, b)}")
+if x < 0:
+    for i in range(int(x)+1, 1):
+        print(f"f({i}) = {lineal(m, i, b)}")</code></pre>
+</div>
+  
+</div>
+
+<div class="cell markdown" id="rstW6uy8LjkA">
+
+<p>
+    Nuevamente podes escribir ese trozo de código en una nueva celda de
+    <b>Código</b> y ejecutarla con <b>Ctrl+Enter</b>
+</p>
+<pre><code class="code-block"></code></pre>
+</div>
+
+<section id="finalmente-algunas-propuestas" class="cell markdown" id="p_G3ara2L6wS">
+
+    <h1>Finalmente algunas propuestas:</h1>
+    <ul>
+        <li>Investigar sobre los tipos de datos, para mejorar el manejo de errores</li>
+        <li>Plantear programas similares de la guía de problemas, que requieran
+        crear otras funciones en Python para el cálculo de funciones
+        lineales(Pendiente, Ordenada al origen, Recta Tangente).</li>
+        <li>Plantear programas similares para grado 2 y 3.</li>
+        <li>Compartir, consultar a nadie molesta, hablar.</li>
+    </ul>
+</section>
+
+<div class="cell markdown" id="jMiI5ZgcNfyZ">
+    <p><strong>Le comentaste a alguien sobre el grupo y quiere unirse!:</strong></p>
+    <p><a href="https://t.me/+jGLWQ8l1ydFjYWEx">Enlace para invitar a alguien al Grupo</a></p>
+</div>
+
+<script src="js/script.js"></script>
+
+<footer class="nav-footer">
+    <a class="nav-btn" href="start.html">⬅ Back</a>
+    <a class="nav-btn" href="/webclub/">Home</a>
+    <!--<a class="nav-btn" href="Teoria 1: Creacion de tabla mediante Plotly Dash.html">Next ➡</a>-->
+</footer>
+  <footer class="index-footer">
+        <div class="footer-bottom">
+            <p>&copy; <span id="current-year">2025</span> - El Club de Python de AMI - Universidad Nacional de Moreno</p>
+            <p class="footer-sub">Todos los derechos reservados</p>
+        </div>
+    </footer>
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        const menuToggle = document.querySelector('.menu-toggle');
+        const closeMenu = document.querySelector('.close-menu');
+        const sidebar = document.querySelector('.sidebar');
+        const menuOverlay = document.querySelector('.menu-overlay');
+
+        if (menuToggle && closeMenu && sidebar && menuOverlay) {
+            
+            menuToggle.addEventListener('click', () => {
+                sidebar.classList.add('active');
+                menuOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden'; 
+            });
+        
+            closeMenu.addEventListener('click', () => {
+                sidebar.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        
+            menuOverlay.addEventListener('click', () => {
+                sidebar.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        
+            const sidebarLinks = document.querySelectorAll('.sidebar-links a');
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth <= 1024) {
+                        sidebar.classList.remove('active');
+                        menuOverlay.classList.remove('active');
+                        document.body.style.overflow = '';
+                    }
+                });
+            });
+        }
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
