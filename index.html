@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="html/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="icon" href="logo.webp" type="image/webp">
+    <link rel="shortcut icon" href="logo.webp">
+    <title>El Club de Python de AMI</title>
+</head>
+
+<body class="index-body">
+    <button class="menu-toggle" aria-label="Abrir menú">
+        <i class="fas fa-bars"></i>
+    </button>
+    <div class="menu-overlay"></div>
+    
+    <div class="container">
+        <aside class="sidebar">
+            <button class="close-menu" aria-label="Cerrar menú">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2 class="sidebar-title"><i class="fas fa-link"></i> Enlaces de Interés</h2>
+            <ul class="sidebar-links">
+                <li><a href="https://www.python.org/downloads/" target="_blank"><i class="fab fa-python"></i> Python</a></li>
+                <li><a href="https://colab.research.google.com/" target="_blank"><i class="fas fa-laptop-code"></i> Python Online con Google Colab</a></li>
+                <li><a href="https://jupyter.org/" target="_blank"><i class="fa-solid fa-laptop-code"></i> Jupyter Lab Offline</a></li>
+                <li><a href="https://docs.python.org/3/" target="_blank"><i class="fa-solid fa-book"></i> Docs Python</a></li>
+                <li><a href="archivos.html" target="_blank"><i class="fa-solid fa-file-alt"></i> Archivos</a></li>
+                <li><a href="start.html" target="_blank"><i class="fa-solid fa-book"></i> Instalación de Python</a></li>
+                <li><a href="init.html" target="_blank"><i class="fa-solid fa-book"></i> Introducción práctica a Python</a></li>
+                <li><a href="https://t.me/+jGLWQ8l1ydFjYWEx" target="_blank"><i class="fab fa-python"></i> El Club de Python de AMI</a></li>
+                <li><a href="https://amipy25.github.io/guias/" target="_blank"><i class="fa-solid fa-network-wired"></i> Guía AMI Unidad 1, 2, 3</a></li>
+            </ul>
+            
+            <div class="sidebar-info">
+                <h3><i class="fas fa-info-circle"></i> Información</h3>
+                <p>Recursos útiles para el estudio de programación orientada a matemáticas.</p>
+            </div>
+        </aside>
+        
+        <main class="main-content">
+            <h1 class="index-title"><i class="fab fa-python fa-2x"></i>El Club de Python de Analisis Matemático</h1>
+            
+            <div class="html-container"></div>
+
+            <div class="content-info">
+                <p><i class="fas fa-sync-alt"></i> El contenido se actualiza automáticamente mientras desarrollen</p>
+                <p><i class="fas fa-mobile-alt"></i> Compatible con dispositivos móviles</p>
+            </div>
+        </main>
+    </div>
+
+     <footer class="index-footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <a href="https://github.com/amipy25" target="_blank" class="footer-logo">
+                    <i class="fab fa-github fa-2x"></i>
+                    <span>GitHub</span>
+                </a>
+            </div>
+            
+            <div class="footer-center">
+                <div class="main-logo">
+                    <img src="logo.webp" alt="El Club de Python AMI" class="logo-img">
+                    <p>El Club de Python de AMI</p>
+                </div>
+            </div>
+            
+            <div class="footer-right">
+                <a href="https://t.me/+jGLWQ8l1ydFjYWEx" target="_blank" class="footer-logo">
+                    <i class="fab fa-python fa-2x"></i>
+                    <span>Unite a El Club de Python de AMI</span>
+                </a>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; <span id="current-year">2025</span> - El Club de Python de AMI - Universidad</p>
+            <p class="footer-sub">Todos los derechos reservados</p>
+        </div>
+    </footer>
+    
+    <script src="html/js/index.js"></script>
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        const menuToggle = document.querySelector('.menu-toggle');
+        const closeMenu = document.querySelector('.close-menu');
+        const sidebar = document.querySelector('.sidebar');
+        const menuOverlay = document.querySelector('.menu-overlay');
+        
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.add('active');
+            menuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Evita scroll
+        });
+        
+        closeMenu.addEventListener('click', () => {
+            sidebar.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+        
+        menuOverlay.addEventListener('click', () => {
+            sidebar.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+        
+        const sidebarLinks = document.querySelectorAll('.sidebar-links a');
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 1024) {
+                    sidebar.classList.remove('active');
+                    menuOverlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
