@@ -1,0 +1,1535 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>1_Objetivo_1</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"
+  type="text/javascript"></script>
+<link rel="icon" href="../logo.webp" type="image/webp">
+    <link rel="shortcut icon" href="../logo.webp">
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<section id="objetivo-1-newton-raphson" class="cell markdown">
+<h1>Objetivo 1: Newton Raphson</h1>
+</section>
+<div class="cell markdown" data-colab_type="text" id="view-in-github">
+<p><a href="https://colab.research.google.com/drive/1b_TGR2hdC7dk6jryivhr6IQdD-k_1qkW?usp=sharing" 
+    target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+<p>Para ver todas las ejecuciones, usar Google Colab</p></p>
+</div>
+<section id="cómo-reutilizar-la-notebook" class="cell markdown"
+id="2uK6S4U0dNm5" data-jp-MarkdownHeadingCollapsed="true">
+<h1>¡Cómo reutilizar la notebook?:</h1>
+<p>Archivo --&gt; Guardar una copia en Drive</p>
+<hr />
+</section>
+<section id="consigna-1" class="cell markdown" id="B7gCkZClNt4-">
+<h1>Consigna 1:</h1>
+<p>Ignacio y Axel programaron en una hoja de cálculo el agoritmo que
+encuentra la raíz del polinomio del <strong>Problema 24</strong>. El
+funcionamiento de esa hoja de cáculo fue analizado en clase. Si quieren
+ver la hoja deben <a
+href="https://docs.google.com/spreadsheets/d/1LxRvf9xtVDwrosqFeKM7k5GtEyRnblXpd550EzsjJRw/edit?gid=0#gid=0">acceder
+al Drive con este enlace</a> y hacer una copia del archivo.
+<strong>Importante:</strong> el archivo es de solo lectura, para que no
+lo editen online.</p>
+<p>En clase surgieron algunas ideas para hacer con esto. Acá las
+transcribimos y agregamos otras:</p>
+<ol>
+<li><p>El archivo permite aproximar la raíz de la función: <span
+class="math display">\[f(x)=x^3+x^2+x-1\]</span>Adaptar el archivo para
+que el usuario pueda aplicarlo a cualquier función polinómica de grado
+3.</p></li>
+<li><p>Adaptar el archivo para que el usuario pueda aplicarlo a
+cualquier función polinómica de grado 4.</p></li>
+<li><p>Analizando el método (<a
+href="https://drive.google.com/file/d/1quxSBDQEV-8i_9TNHRR0tm0pS58wmEfR/view?usp=sharing">Newton-Raphson</a>)
+vimos que el mismo podía fallar si en una de los pasos del proceso la
+recta tangente resullta horizontal. Inventar un ejemplo en el que se vea
+cómmo se produce este <em>accidente</em> y falla el método.</p></li>
+<li><p>También analizando el método, vimos que si uno lo repite un
+número arbitrario de veces puede haber un momento en el que se queda
+reobteniendo el mismo resultado y ya no lo mejora, por más que repitamos
+los cálculos. Agregarle al allgoritmo alguna manera de que se dé cuenta
+de que le está sucediendo eso y se interrumpa cuando ya no está
+progresando.</p></li>
+<li><p>Proponer otras mejoras e implementarlas (consigna abierta para
+que vuele la creatividad).</p></li>
+</ol>
+<p><br></p>
+</section>
+<div class="cell markdown" id="Kk4F6GQ1ds1H">
+<h1 id="partiendo-del-algoritmo-de-ignacio-y-axel">Partiendo del
+algoritmo de Ignacio y Axel:</h1>
+<p>Conocemos que:</p>
+<ul>
+<li>Se debe ingresar o pedir al usuario, la forma Polinómica de Grado 3,
+teniendo en cuenta que dichos valores deben almacenarse en variables y
+que puede que algunas no se ingresen, por lo tanto, si se piden todas
+las variables al usuario, se le debe informar que rellene con cero la/s
+variable/s que no se ingrese/n.</li>
+<li>Una vez ingresados los datos, el algoritmo indica que se debe
+derivar la función.</li>
+<li>Luego se debe hallar la recta tangente en un punto especifico de la
+derivada y calcular su raíz.</li>
+<li>Una vez calculada la raíz, se verifica en la función si es raíz o si
+se aproxima a cero, si es raíz termina el algoritmo.</li>
+<li>Si no es raíz, se repite el procedimiento de buscar la recta
+tangente en ese valor de raíz que se caculó y se halla su raíz, y se la
+evalua nnuevamente en la función para ver si es cero.</li>
+<li>El algoritmo debe tener la decisión de parar la iteración llegado un
+número de decimales, opción que se podría pedir al usuario.</li>
+</ul>
+<h1 id="pasos">Pasos</h1>
+<ol>
+<li>Derivar <em>f(x)</em></li>
+<li>Definir un valor inicial <em>i</em>.</li>
+<li>Hallar Tangente: <span
+class="math display">\[T:f&#39;(i)(x-i)+f(i)\]</span></li>
+<li>Hallar raíz de T.</li>
+<li>Evaluar la raíz hallada en la función para comprobar si es raíz,
+sino, la raíz se convierte en un nuevo valor i.</li>
+</ol>
+<p>Una vez logrado el objetivo, ¿Cómo mejorarlo?. Gráfica resultante de
+las iteraciónes de las rectas tangentes. Tabla generada por las
+iteraciones.</p>
+<p><br></p>
+<hr />
+</div>
+<section id="dada-la-función-polinómica" class="cell markdown"
+id="evyVmi3IHocP">
+<h1>Dada la función polinómica:</h1>
+<p><span class="math display">\[f(x)=ax^3+bx^2+cx+d\]</span></p>
+<p>Pedimos al usuario el ingreso de las cuatro variables y un mensaje
+indicando, que ingrese cero para las variables que no correspondan.</p>
+<p>En Python se predefinen variables dandoles un valor inicial. Y para
+la entrada del usuario se utiliza la función <a
+href="https://docs.python.org/3/library/functions.html#input">input(prompt)</a>
+La cuál nos devuelve un String con lo que ingresa y debemos <a
+href="https://docs.python.org/3/library/ctypes.html#ctypes.cast">castear,
+cast como en C</a> convertir al tipo de dato que requerimos, en un
+inicio usamos <a
+href="https://docs.python.org/3/library/functions.html#int">int()</a>.</p>
+<p>También usamos un <a
+href="https://docs.python.org/3/reference/compound_stmts.html#while">bucle
+while</a> el cual seguira preguntando hasta que su condición sea
+<code>False</code>.</p>
+<pre><code># Sintaxis del Bucle while:
+
+while condicion:
+  hace algo
+
+Ejemplo:
+
+while a &lt; 0:
+  a = int(input(&quot;Ingrese un número positivo: &quot;))
+
+print(a)
+</code></pre>
+<p>Y el usuario está ingresando siempre:</p>
+<ul>
+<li><code>-1</code> -<code>-23902898</code> -<code>-72947927</code></li>
+</ul>
+<p>El <code>print(a)</code> jamás llega a ejecutarse, recién lo hará
+cuando ingrese un número positivo.</p>
+<p>Por otro lado, para manejar la estética del <code>print</code>
+chequeamos el signo del número, de esta forma evitamos el
+<code>+-</code> en una ecuación con coeficiente negativo, para ello
+usamos el método <a
+href="https://docs.python.org/3/library/functions.html#abs">abs(x)</a>
+el cuál nos devuelve el valor absoluto de un número, además manejamos si
+es <code>int</code> o <code>float</code>, pero si es negativo escribimos
+el signo <code>-</code>, tengamos en cuenta que es solo texto, no nos
+sirve para realizar operaciones. También tenemos en cuenta que el número
+sea distinto de cero, si lo es, omitimos que salga en el
+<code>print</code> ya que antes de evaluar si es positivo o negativo,
+nos fijamos que no sea cero.</p>
+<hr />
+</section>
+<div class="cell code" data-execution_count="5"
+data-colab="{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}"
+id="8f6WMJGfLyip" data-outputId="6f23da08-1bb5-4d26-e320-a2231572bb12">
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span>b<span class="op">=</span>c<span class="op">=</span>d<span class="op">=</span>n<span class="op">=</span>i<span class="op">=</span><span class="dv">0</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> a <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  a<span class="op">=</span><span class="bu">float</span>(<span class="bu">input</span>(<span class="st">&quot;Ingrese el coeficiente principal: &quot;</span>))</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>b<span class="op">=</span><span class="bu">float</span>(<span class="bu">input</span>(<span class="st">&quot;Ingrese el coeficiente cuadrático: &quot;</span>))</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>c<span class="op">=</span><span class="bu">float</span>(<span class="bu">input</span>(<span class="st">&quot;Ingrese el coeficiente lineal: &quot;</span>))</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>d<span class="op">=</span><span class="bu">float</span>(<span class="bu">input</span>(<span class="st">&quot;Ingrese el término independiente: &quot;</span>))</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>n<span class="op">=</span><span class="bu">int</span>(x) <span class="cf">if</span> (x <span class="op">:=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">&quot;Ingrese un valor inicial de x: &quot;</span>))).is_integer() <span class="cf">else</span> x</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>i<span class="op">=</span><span class="bu">int</span>(x) <span class="cf">if</span> (x <span class="op">:=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">&quot;Ingrese el número de iteraciones que desea ejecutar: &quot;</span>))).is_integer() <span class="cf">else</span> x</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>funcion<span class="op">=</span><span class="st">&quot;&quot;</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> a <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  funcion <span class="op">+=</span> <span class="ss">f&quot;-</span><span class="sc">{</span><span class="bu">int</span>(<span class="bu">abs</span>(a)) <span class="cf">if</span> <span class="bu">abs</span>(a)<span class="sc">.</span>is_integer() <span class="cf">else</span> <span class="bu">abs</span>(a)<span class="sc">}</span><span class="ss">x^3&quot;</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  funcion <span class="op">+=</span> <span class="ss">f&quot;</span><span class="sc">{</span><span class="bu">int</span>(a) <span class="cf">if</span> a<span class="sc">.</span>is_integer() <span class="cf">else</span> a<span class="sc">}</span><span class="ss">x^3&quot;</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> b <span class="op">!=</span> <span class="dv">0</span>:</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> b <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    funcion <span class="op">+=</span> <span class="ss">f&quot; - </span><span class="sc">{</span><span class="bu">int</span>(<span class="bu">abs</span>(b)) <span class="cf">if</span> <span class="bu">abs</span>(b)<span class="sc">.</span>is_integer() <span class="cf">else</span> <span class="bu">abs</span>(b)<span class="sc">}</span><span class="ss">x^2&quot;</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span>:</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    funcion <span class="op">+=</span> <span class="ss">f&quot; + </span><span class="sc">{</span><span class="bu">int</span>(b) <span class="cf">if</span> b<span class="sc">.</span>is_integer() <span class="cf">else</span> b<span class="sc">}</span><span class="ss">x^2&quot;</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> c <span class="op">!=</span> <span class="dv">0</span>:</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> c <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    funcion <span class="op">+=</span> <span class="ss">f&quot; - </span><span class="sc">{</span><span class="bu">int</span>(<span class="bu">abs</span>(c)) <span class="cf">if</span> <span class="bu">abs</span>(c)<span class="sc">.</span>is_integer() <span class="cf">else</span> <span class="bu">abs</span>(c)<span class="sc">}</span><span class="ss">x&quot;</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span>:</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    funcion <span class="op">+=</span> <span class="ss">f&quot; + </span><span class="sc">{</span><span class="bu">int</span>(c) <span class="cf">if</span> c<span class="sc">.</span>is_integer() <span class="cf">else</span> c<span class="sc">}</span><span class="ss">x&quot;</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> d <span class="op">!=</span> <span class="dv">0</span>:</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> d <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>    funcion <span class="op">+=</span> <span class="ss">f&quot; - </span><span class="sc">{</span><span class="bu">int</span>(<span class="bu">abs</span>(d)) <span class="cf">if</span> <span class="bu">abs</span>(d)<span class="sc">.</span>is_integer() <span class="cf">else</span> <span class="bu">abs</span>(d)<span class="sc">}</span><span class="ss">&quot;</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span>:</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>    funcion <span class="op">+=</span> <span class="ss">f&quot; + </span><span class="sc">{</span><span class="bu">int</span>(d) <span class="cf">if</span> d<span class="sc">.</span>is_integer() <span class="cf">else</span> d<span class="sc">}</span><span class="ss">&quot;</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;</span><span class="ch">\n</span><span class="ss">La ecuación ingresada es: f(x) = </span><span class="sc">{</span>funcion<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<div class="output stream stdin">
+<pre><code>Ingrese el coeficiente principal:  2
+Ingrese el coeficiente cuadrático:  -3
+Ingrese el coeficiente lineal:  -4
+Ingrese el término independiente:  -2
+Ingrese un valor inicial de x:  1
+Ingrese el número de iteraciones que desea ejecutar:  9
+</code></pre>
+</div>
+<div class="output stream stdout">
+<pre><code>
+La ecuación ingresada es: f(x) = 2x^3 - 3x^2 - 4x - 2
+</code></pre>
+</div>
+</div>
+<div class="cell markdown" id="-iwAdu2PcFNs">
+<p><br></p>
+</div>
+<section id="mejorar-el-manejo-del-tipo-de-datos" class="cell markdown"
+id="S-cDib3CICQG">
+<h1>Mejorar el manejo del tipo de datos:</h1>
+<hr />
+<p><br></p>
+<ul>
+<li><p>Podemos evaluar el ingreso, justo antes de guardarlo,
+almacenandolo en una variable auxiliar mediante el operador de
+asignación <a
+href="https://docs.python.org/3/reference/expressions.html#assignment-expressions">walrus
+operator</a> y el uso del operador ternario <a
+href="https://docs.python.org/3/reference/expressions.html#conditional-expressions">ternary
+operator</a> el cuál es un bucle if en una sola linea, a la izquierda va
+lo que pasa si la condición que va en el medio es cierta y a la derecha
+va la condicion sino es cierta. Es decir:</p></li>
+<li><p>Un <a
+href="https://docs.python.org/3/tutorial/controlflow.html#if-statements">bucle
+if</a> en Python contiene la siguiente sintaxis:</p></li>
+</ul>
+<pre><code># Bucle if en Python:
+
+if condicion :
+  hace algo si la condicion es cierta(True)
+else:
+  hace otra cosa si la condicion es False
+
+# Un popquito más claro:
+if condicion:
+  A
+else:
+  B</code></pre>
+<pre><code># Operador ternario:
+
+hace algo si a es negativo if condicion else hace otra cosa si la condicion es False
+
+# Un poquito más claro:
+A if condicion else B
+</code></pre>
+<p>Además usamos el <strong>método</strong> <a
+href="https://docs.python.org/3/library/stdtypes.html#float.is_integer">is_integer()</a>
+de la <strong>clase float</strong> perteneciente a los tipos de datos
+integrados en el interprete de Python, en las clases las <em>funciones
+se llaman </em>métodos* y las <em>variables se llaman parametros o
+argumentos</em>.</p>
+<p>Lo que hacemos es poner como condición la entrada del usuario,
+convertir a <code>float</code> esa entrada, guardarla en <code>x</code>
+con el <em>operador de asignación walrus</em> <code>:=</code>, verificar
+si la entrada es un número entero, en base a ello, se guardara en la
+variable <code>a</code> el valor de <code>x</code> si
+<code>is_integer()</code> nos devuelve <code>True</code> convertiremos
+el <code>float</code> a <code>int</code> lo que vemos a la izquierda del
+operador ternario, si devuelve <code>False</code> lo dejaremos como se
+guardó en <code>float</code>, lo que observamos a la derecha en el
+operador ternario.</p>
+<p><br></p>
+</section>
+<div class="cell code" data-execution_count="6"
+data-colab="{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}"
+id="5AHP0df0Q3SI" data-outputId="3f990018-4269-4c02-925f-47a9c96ff1f0">
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span>b<span class="op">=</span>c<span class="op">=</span>d<span class="op">=</span>n<span class="op">=</span>i<span class="op">=</span><span class="dv">0</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>funcion<span class="op">=</span><span class="st">&quot;&quot;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> a <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  a <span class="op">=</span> <span class="bu">int</span>(x) <span class="cf">if</span> (x <span class="op">:=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">&quot;Ingrese el coeficiente principal: &quot;</span>))).is_integer() <span class="cf">else</span> x</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="bu">int</span>(x) <span class="cf">if</span> (x <span class="op">:=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">&quot;Ingrese el coeficiente cuadrático: &quot;</span>))).is_integer() <span class="cf">else</span> x</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> <span class="bu">int</span>(x) <span class="cf">if</span> (x <span class="op">:=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">&quot;Ingrese el coeficiente lineal: &quot;</span>))).is_integer() <span class="cf">else</span> x</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> <span class="bu">int</span>(x) <span class="cf">if</span> (x <span class="op">:=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">&quot;Ingrese el término independiente: &quot;</span>))).is_integer() <span class="cf">else</span> x</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>n<span class="op">=</span><span class="bu">int</span>(x) <span class="cf">if</span> (x <span class="op">:=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">&quot;Ingrese un valor inicial de x: &quot;</span>))).is_integer() <span class="cf">else</span> x</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>i<span class="op">=</span><span class="bu">int</span>(x) <span class="cf">if</span> (x <span class="op">:=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">&quot;Ingrese el número de iteraciones que desea ejecutar: &quot;</span>))).is_integer() <span class="cf">else</span> x</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>funcion <span class="op">+=</span> <span class="ss">f&quot;-</span><span class="sc">{</span><span class="bu">abs</span>(a)<span class="sc">}</span><span class="ss">x^3&quot;</span> <span class="cf">if</span> a <span class="op">&lt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="ss">f&quot;</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">x^3&quot;</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> b <span class="op">!=</span> <span class="dv">0</span>:</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>  funcion <span class="op">+=</span><span class="ss">f&quot; - </span><span class="sc">{</span><span class="bu">abs</span>(b)<span class="sc">}</span><span class="ss">x^2&quot;</span> <span class="cf">if</span> b <span class="op">&lt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="ss">f&quot; + </span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">x^2&quot;</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> c <span class="op">!=</span> <span class="dv">0</span>:</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  funcion <span class="op">+=</span><span class="ss">f&quot; - </span><span class="sc">{</span><span class="bu">abs</span>(c)<span class="sc">}</span><span class="ss">x&quot;</span> <span class="cf">if</span> c <span class="op">&lt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="ss">f&quot; + </span><span class="sc">{</span>c<span class="sc">}</span><span class="ss">x&quot;</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> d <span class="op">!=</span> <span class="dv">0</span>:</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>  funcion <span class="op">+=</span><span class="ss">f&quot;- </span><span class="sc">{</span><span class="bu">abs</span>(d)<span class="sc">}</span><span class="ss">&quot;</span> <span class="cf">if</span> d <span class="op">&lt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="ss">f&quot;+ </span><span class="sc">{</span>d<span class="sc">}</span><span class="ss">&quot;</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;</span><span class="ch">\n</span><span class="ss">La ecuación ingresada es: f(x) = </span><span class="sc">{</span>funcion<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<div class="output stream stdin">
+<pre><code>Ingrese el coeficiente principal:  2
+Ingrese el coeficiente cuadrático:  -3
+Ingrese el coeficiente lineal:  -4
+Ingrese el término independiente:  -2
+Ingrese un valor inicial de x:  1
+Ingrese el número de iteraciones que desea ejecutar:  9
+</code></pre>
+</div>
+<div class="output stream stdout">
+<pre><code>
+La ecuación ingresada es: f(x) = 2x^3 - 3x^2 - 4x- 2
+</code></pre>
+</div>
+</div>
+<div class="cell markdown" id="FOB8PZs6cerI">
+<p><br></p>
+</div>
+<section id="mejorar-la-estética-con-unicode" class="cell markdown"
+id="s39I-b7fIKJg">
+<h1>Mejorar la estética con Unicode:</h1>
+<hr />
+<ul>
+<li><p>^3= \u00B3</p></li>
+<li><p>^2= \u00B2</p></li>
+<li><p>^1= \u00B9</p></li>
+</ul>
+<p>Entonces: <br></p>
+</section>
+<div class="cell code" data-execution_count="7"
+data-colab="{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}"
+id="Obw3YsESRsKH" data-outputId="551fdd51-70af-4f46-dc24-db850957734b">
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span>b<span class="op">=</span>c<span class="op">=</span>d<span class="op">=</span>n<span class="op">=</span>i<span class="op">=</span><span class="dv">0</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>funcion<span class="op">=</span><span class="st">&quot;&quot;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> a <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  a <span class="op">=</span> <span class="bu">int</span>(x) <span class="cf">if</span> (x <span class="op">:=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">&quot;Ingrese el coeficiente principal: &quot;</span>))).is_integer() <span class="cf">else</span> x</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="bu">int</span>(x) <span class="cf">if</span> (x <span class="op">:=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">&quot;Ingrese el coeficiente cuadrático: &quot;</span>))).is_integer() <span class="cf">else</span> x</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> <span class="bu">int</span>(x) <span class="cf">if</span> (x <span class="op">:=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">&quot;Ingrese el coeficiente lineal: &quot;</span>))).is_integer() <span class="cf">else</span> x</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> <span class="bu">int</span>(x) <span class="cf">if</span> (x <span class="op">:=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">&quot;Ingrese el término independiente: &quot;</span>))).is_integer() <span class="cf">else</span> x</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>n<span class="op">=</span><span class="bu">int</span>(x) <span class="cf">if</span> (x <span class="op">:=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">&quot;Ingrese un valor inicial de x: &quot;</span>))).is_integer() <span class="cf">else</span> x</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>i<span class="op">=</span><span class="bu">int</span>(x) <span class="cf">if</span> (x <span class="op">:=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">&quot;Ingrese el número de iteraciones que desea ejecutar: &quot;</span>))).is_integer() <span class="cf">else</span> x</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>funcion <span class="op">+=</span> <span class="ss">f&quot;-</span><span class="sc">{</span><span class="bu">abs</span>(a)<span class="sc">}</span><span class="ss">x</span><span class="ch">\u00B3</span><span class="ss">&quot;</span> <span class="cf">if</span> a <span class="op">&lt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="ss">f&quot;</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">x</span><span class="ch">\u00B3</span><span class="ss">&quot;</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> b <span class="op">!=</span> <span class="dv">0</span>:</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>  funcion <span class="op">+=</span><span class="ss">f&quot; - </span><span class="sc">{</span><span class="bu">abs</span>(b)<span class="sc">}</span><span class="ss">x</span><span class="ch">\u00B2</span><span class="ss">&quot;</span> <span class="cf">if</span> b <span class="op">&lt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="ss">f&quot; + </span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">x</span><span class="ch">\u00B2</span><span class="ss">&quot;</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> c <span class="op">!=</span> <span class="dv">0</span>:</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>  funcion <span class="op">+=</span><span class="ss">f&quot; - </span><span class="sc">{</span><span class="bu">abs</span>(c)<span class="sc">}</span><span class="ss">x&quot;</span> <span class="cf">if</span> c <span class="op">&lt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="ss">f&quot; + </span><span class="sc">{</span>c<span class="sc">}</span><span class="ss">x&quot;</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> d <span class="op">!=</span> <span class="dv">0</span>:</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>  funcion <span class="op">+=</span><span class="ss">f&quot;- </span><span class="sc">{</span><span class="bu">abs</span>(d)<span class="sc">}</span><span class="ss">&quot;</span> <span class="cf">if</span> d <span class="op">&lt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="ss">f&quot;+ </span><span class="sc">{</span>d<span class="sc">}</span><span class="ss">&quot;</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;</span><span class="ch">\n</span><span class="ss">La ecuación ingresada es f(x) = </span><span class="sc">{</span>funcion<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<div class="output stream stdin">
+<pre><code>Ingrese el coeficiente principal:  2
+Ingrese el coeficiente cuadrático:  -3
+Ingrese el coeficiente lineal:  -4
+Ingrese el término independiente:  -2
+Ingrese un valor inicial de x:  1
+Ingrese el número de iteraciones que desea ejecutar:  9
+</code></pre>
+</div>
+<div class="output stream stdout">
+<pre><code>
+La ecuación ingresada es f(x) = 2x³ - 3x² - 4x- 2
+</code></pre>
+</div>
+</div>
+<div class="cell markdown" id="iRx0ARnecn7k">
+<p><br></p>
+</div>
+<section
+id="y-podemos-mejorar-aun-más-la-construcción-de-la-función-ingresada"
+class="cell markdown" id="Xuqs61UvIV_D">
+<h1>Y podemos mejorar aun más la construcción de la función
+ingresada:</h1>
+<hr />
+<p>Mediante el uso de <a
+href="https://docs.python.org/3/library/string.html#format-specification-mini-language">format
+string sign</a> el cuál maneja el signo de los coeficientes, pero no es
+aplicable al primer coeficiente, ya que agrega el <code>+</code> o el
+<code>-</code> sí o sí.</p>
+</section>
+<div class="cell code" data-execution_count="8"
+data-colab="{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}"
+id="gwa6ZTh3IW_8" data-outputId="d0caad7a-dc8e-4ff0-8ccd-165b2b29b08c">
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span>b<span class="op">=</span>c<span class="op">=</span>d<span class="op">=</span>n<span class="op">=</span>i<span class="op">=</span><span class="dv">0</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>funcion<span class="op">=</span><span class="st">&quot;&quot;</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> a <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  a <span class="op">=</span> <span class="bu">int</span>(x) <span class="cf">if</span> (x <span class="op">:=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">&quot;Ingrese el coeficiente principal: &quot;</span>))).is_integer() <span class="cf">else</span> x</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="bu">int</span>(x) <span class="cf">if</span> (x <span class="op">:=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">&quot;Ingrese el coeficiente cuadrático: &quot;</span>))).is_integer() <span class="cf">else</span> x</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> <span class="bu">int</span>(x) <span class="cf">if</span> (x <span class="op">:=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">&quot;Ingrese el coeficiente lineal: &quot;</span>))).is_integer() <span class="cf">else</span> x</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> <span class="bu">int</span>(x) <span class="cf">if</span> (x <span class="op">:=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">&quot;Ingrese el término independiente: &quot;</span>))).is_integer() <span class="cf">else</span> x</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>n<span class="op">=</span><span class="bu">int</span>(x) <span class="cf">if</span> (x <span class="op">:=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">&quot;Ingrese un valor inicial de x: &quot;</span>))).is_integer() <span class="cf">else</span> x</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>i<span class="op">=</span><span class="bu">int</span>(x) <span class="cf">if</span> (x <span class="op">:=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">&quot;Ingrese el número de iteraciones que desea ejecutar: &quot;</span>))).is_integer() <span class="cf">else</span> x</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>funcion <span class="op">+=</span> <span class="ss">f&quot;-</span><span class="sc">{</span><span class="bu">abs</span>(a)<span class="sc">}</span><span class="ss">x</span><span class="ch">\u00B3</span><span class="ss"> &quot;</span> <span class="cf">if</span> a <span class="op">&lt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="ss">f&quot;</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">x</span><span class="ch">\u00B3</span><span class="ss"> &quot;</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> b <span class="op">!=</span> <span class="dv">0</span>:</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>  funcion <span class="op">+=</span><span class="ss">f&quot;</span><span class="sc">{</span>b<span class="sc">:+}</span><span class="ss">x</span><span class="ch">\u00B2</span><span class="ss"> &quot;</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> c <span class="op">!=</span> <span class="dv">0</span>:</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>  funcion <span class="op">+=</span> <span class="ss">f&quot;</span><span class="sc">{</span>c<span class="sc">:+}</span><span class="ss">x &quot;</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> d <span class="op">!=</span> <span class="dv">0</span>:</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>  funcion <span class="op">+=</span><span class="ss">f&quot;</span><span class="sc">{</span>d<span class="sc">:+}</span><span class="ss">&quot;</span></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;</span><span class="ch">\n</span><span class="ss">La ecuación ingresada es f(x) = </span><span class="sc">{</span>funcion<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<div class="output stream stdin">
+<pre><code>Ingrese el coeficiente principal:  2
+Ingrese el coeficiente cuadrático:  -3
+Ingrese el coeficiente lineal:  4
+Ingrese el término independiente:  -2
+Ingrese un valor inicial de x:  1
+Ingrese el número de iteraciones que desea ejecutar:  9
+</code></pre>
+</div>
+<div class="output stream stdout">
+<pre><code>
+La ecuación ingresada es f(x) = 2x³ -3x² +4x -2
+</code></pre>
+</div>
+</div>
+<div class="cell markdown" id="okiLCC99ctVu">
+<p><br></p>
+</div>
+<section id="también-podemos-usar-del-módulo-ipythondisplay"
+class="cell markdown" id="wooxXu1CIdcH">
+<h1>También podemos usar del módulo IPython.display:</h1>
+<hr />
+<ul>
+<li>El método <a
+href="https://ipython.readthedocs.io/en/stable/api/generated/IPython.display.html#module-IPython.display">display</a>
+que renderiza, en este caso el texto ingresado con
+<code>Math</code>.</li>
+<li>La clase <a
+href="https://ipython.readthedocs.io/en/stable/api/generated/IPython.display.html#IPython.display.Math">Math</a>
+que nos permite mostra el texto como LaTeX. Y de LaTeX usamos
+<code>\text{"texto"}</code>.</li>
+</ul>
+<p>Docs <a
+href="https://ipython.readthedocs.io/en/stable/index.html">Ipython</a></p>
+<p>De esta manera, nuestro código puede cambiar el <code>print</code>
+a:</p>
+<p><br></p>
+</section>
+<div class="cell code" data-execution_count="9"
+data-colab="{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:163}"
+id="-3lGxwLDIiyP" data-outputId="7e47722a-50d2-4ada-be4d-a7f4ba8953e9">
+<div class="sourceCode" id="cb16"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span>b<span class="op">=</span>c<span class="op">=</span>d<span class="op">=</span>n<span class="op">=</span>i<span class="op">=</span><span class="dv">0</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>funcion<span class="op">=</span><span class="st">&quot;&quot;</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> a <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  a <span class="op">=</span> <span class="bu">int</span>(x) <span class="cf">if</span> (x <span class="op">:=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">&quot;Ingrese el coeficiente principal: &quot;</span>))).is_integer() <span class="cf">else</span> x</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="bu">int</span>(x) <span class="cf">if</span> (x <span class="op">:=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">&quot;Ingrese el coeficiente cuadrático: &quot;</span>))).is_integer() <span class="cf">else</span> x</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> <span class="bu">int</span>(x) <span class="cf">if</span> (x <span class="op">:=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">&quot;Ingrese el coeficiente lineal: &quot;</span>))).is_integer() <span class="cf">else</span> x</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> <span class="bu">int</span>(x) <span class="cf">if</span> (x <span class="op">:=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">&quot;Ingrese el término independiente: &quot;</span>))).is_integer() <span class="cf">else</span> x</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>n<span class="op">=</span><span class="bu">int</span>(x) <span class="cf">if</span> (x <span class="op">:=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">&quot;Ingrese un valor inicial de x: &quot;</span>))).is_integer() <span class="cf">else</span> x</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>i<span class="op">=</span><span class="bu">int</span>(x) <span class="cf">if</span> (x <span class="op">:=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">&quot;Ingrese el número de iteraciones que desea ejecutar: &quot;</span>))).is_integer() <span class="cf">else</span> x</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>funcion <span class="op">+=</span> <span class="ss">f&quot;-</span><span class="sc">{</span><span class="bu">abs</span>(a)<span class="sc">}</span><span class="ss">x^3 &quot;</span> <span class="cf">if</span> a <span class="op">&lt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="ss">f&quot;</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">x^3 &quot;</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> b <span class="op">!=</span> <span class="dv">0</span>:</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>  funcion <span class="op">+=</span><span class="ss">f&quot;</span><span class="sc">{</span>b<span class="sc">:+}</span><span class="ss">x^2 &quot;</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> c <span class="op">!=</span> <span class="dv">0</span>:</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>  funcion <span class="op">+=</span> <span class="ss">f&quot;</span><span class="sc">{</span>c<span class="sc">:+}</span><span class="ss">x &quot;</span></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> d <span class="op">!=</span> <span class="dv">0</span>:</span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>  funcion <span class="op">+=</span><span class="ss">f&quot;</span><span class="sc">{</span>d<span class="sc">:+}</span><span class="ss">&quot;</span></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display, Math</span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>display(Math(<span class="vs">r&quot;</span><span class="ch">\t</span><span class="vs">ext{ }&quot;</span>))</span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>display(Math(<span class="vs">r&quot;</span><span class="ch">\t</span><span class="vs">ext{La ecuación ingresada es: } f</span><span class="kw">(</span><span class="vs">x</span><span class="kw">)</span><span class="vs"> = &quot;</span> <span class="op">+</span> funcion))</span></code></pre></div>
+<div class="output stream stdin">
+<pre><code>Ingrese el coeficiente principal:  -2
+Ingrese el coeficiente cuadrático:  2
+Ingrese el coeficiente lineal:  3
+Ingrese el término independiente:  4
+Ingrese un valor inicial de x:  1
+Ingrese el número de iteraciones que desea ejecutar:  9
+</code></pre>
+</div>
+<div class="output display_data">
+<pre><code>&lt;IPython.core.display.Math object&gt;</code></pre>
+</div>
+<div class="output display_data">
+<pre><code>&lt;IPython.core.display.Math object&gt;</code></pre>
+</div>
+</div>
+<div class="cell markdown" id="_r6TPwcEczzc">
+<p><br></p>
+</div>
+<section id="ahora-que-ya-manejamos-la-introdución-de-datos"
+class="cell markdown" id="jVZEg9wKIgzM">
+<h1><strong>Ahora que ya manejamos la introdución de datos</strong></h1>
+<hr />
+<p>Pasamos a realizar las operaciones. Para ello crearemos funciones
+pequeñas que sólo realizan lo que haríamos en una hoja, evaluar
+<code>x</code> en la funcion, su derivada, calcular la ordenada al
+origen de la recta tangente e y finalmente aplicamos Newton-Raphson para
+hallar la raíz de la recta tangente que nos dará un nuevo
+<code>x</code>.</p>
+<p><span class="math display">\[x_{n+1} =
+\frac{-b}{f&#39;(x)}\]</span></p>
+<p><br></p>
+</section>
+<div class="cell code" data-execution_count="10" id="HsRTXWqNIrXX">
+<div class="sourceCode" id="cb20"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(x):</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a<span class="op">*</span>x<span class="op">**</span><span class="dv">3</span> <span class="op">+</span> b<span class="op">*</span>x<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> c<span class="op">*</span>x <span class="op">+</span> d</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> derivada(x):</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">3</span><span class="op">*</span>a<span class="op">*</span>x<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> <span class="dv">2</span><span class="op">*</span>b<span class="op">*</span>x <span class="op">+</span> c</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ordenada(x):</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> f(x) <span class="op">-</span> derivada(x) <span class="op">*</span> x</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> raiz(x_ini, max_i):</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>  <span class="im">import</span> time</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>  x<span class="op">=</span>x_ini</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(max_i):</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> derivada(x) <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>      <span class="bu">print</span>(<span class="st">&quot;¡Derivada igual a cero! Reintentar con otro x inicial&quot;</span>)</span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> <span class="op">-</span>ordenada(x) <span class="op">/</span> derivada(x)</span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(x)</span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>    time.sleep(<span class="dv">1</span>)</span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> x</span></code></pre></div>
+</div>
+<div class="cell markdown" id="1ei-rJ1vc6Wc">
+<p><br></p>
+</div>
+<div class="cell code" data-execution_count="11"
+data-colab="{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:246}"
+id="DCs17oHqIxU3" data-outputId="ec169c09-4cdf-4520-89f8-1ef67366c7c3">
+<div class="sourceCode" id="cb21"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>newton<span class="op">=</span>raiz(n,i)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>display(Math(<span class="vs">fr&quot;</span><span class="ch">\t</span><span class="vs">ext</span><span class="ch">{{</span><span class="vs">La raíz es aproximadamente: </span><span class="ch">}}</span><span class="vs"> </span><span class="ch">\t</span><span class="vs">extbf</span><span class="ch">{{</span><span class="vs">x</span><span class="ch">}}</span><span class="vs"> </span><span class="ch">\a</span><span class="vs">pprox </span><span class="sc">{</span>newton<span class="sc">}</span><span class="vs"> </span><span class="ch">\t</span><span class="vs">ext</span><span class="ch">{{</span><span class="vs">, en </span><span class="ch">}}</span><span class="vs"> </span><span class="sc">{</span>i<span class="sc">}</span><span class="vs"> </span><span class="ch">\t</span><span class="vs">ext</span><span class="ch">{{</span><span class="vs"> iteraciones</span><span class="dv">.</span><span class="ch">}}</span><span class="vs">&quot;</span>))</span></code></pre></div>
+<div class="output stream stdout">
+<pre><code>-6.0
+-3.932489451476793
+-2.560582439921068
+-1.6372876178570992
+-0.9635511489931292
+-0.22338847913070786
+-2.133667536224943
+-1.338192399909688
+-0.699916891250009
+
+
+</code></pre>
+</div>
+<div class="output display_data">
+<pre><code>&lt;IPython.core.display.Math object&gt;</code></pre>
+</div>
+</div>
+<div class="cell markdown" id="uLuhrRwpc8kU">
+<p><br></p>
+</div>
+<section id="mostrar-una-tabla" class="cell markdown" id="NSFoeOXzI2gT">
+<h1>Mostrar una Tabla:</h1>
+<hr />
+<p>Con las iteraciones, se agrega otro método de la clase display: <a
+href="https://ipython.readthedocs.io/en/stable/api/generated/IPython.display.html#IPython.display.clear_output">clear_output</a>
+se usa <a
+href="https://docs.python.org/3/library/time.html#time.sleep">time.sleep(secs)</a>
+para que vayan mostrandose las iteracciones cada un segundo. Se usa
+LaTeX para el armado de la tabla mediante un
+<code>\begin{array}</code>.</p>
+<p><br></p>
+</section>
+<div class="cell code" data-execution_count="12" id="JKcSHyNtI1t9">
+<div class="sourceCode" id="cb24"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display, Math, clear_output</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> raiz(x_ini, max_i):</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> x_ini</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Encabezado de la tabla (solo se muestra una vez)</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    tabla <span class="op">=</span> <span class="vs">r&quot;&quot;&quot;</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="vs">    </span><span class="dv">\b</span><span class="vs">egin{array}{</span><span class="cf">|</span><span class="vs">c</span><span class="cf">|</span><span class="vs">c</span><span class="cf">|</span><span class="vs">c</span><span class="cf">|</span><span class="vs">c</span><span class="cf">|</span><span class="vs">c</span><span class="cf">|</span><span class="vs">c</span><span class="cf">|</span><span class="vs">}</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="vs">    </span><span class="er">\</span><span class="vs">hline</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="vs">    </span><span class="ch">\t</span><span class="vs">ext{N° Iteración} &amp; x &amp; f</span><span class="kw">(</span><span class="vs">x</span><span class="kw">)</span><span class="vs"> &amp; </span><span class="ch">\t</span><span class="vs">extbf{Pendiente en }</span><span class="kw">(</span><span class="vs">x, f</span><span class="kw">(</span><span class="vs">x</span><span class="kw">)</span><span class="vs"> &amp; </span><span class="ch">\t</span><span class="vs">extbf{Ordenada de la tangente} &amp; </span><span class="ch">\t</span><span class="vs">extbf{Raíz de la tangente} </span><span class="ch">\\</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="vs">    </span><span class="er">\</span><span class="vs">hline</span></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="vs">    &quot;&quot;&quot;</span></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>    display(Math(tabla <span class="op">+</span> <span class="vs">r&quot;</span><span class="er">\</span><span class="vs">hline </span><span class="er">\</span><span class="vs">end{array}&quot;</span>))  <span class="co"># Tabla inicial vacía</span></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(max_i):</span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>        dx <span class="op">=</span> derivada(x)</span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> dx <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>            clear_output(wait<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>            display(Math(<span class="vs">r&quot;</span><span class="ch">\t</span><span class="vs">ext{¡Error! Derivada cero</span><span class="dv">.</span><span class="vs">}&quot;</span>))</span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a>        x_nuevo <span class="op">=</span> <span class="op">-</span>ordenada(x) <span class="op">/</span> dx</span>
+<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a>        tabla <span class="op">+=</span> <span class="vs">fr&quot;</span><span class="sc">{</span>_ <span class="op">+</span> <span class="dv">1</span><span class="sc">}</span><span class="vs"> &amp; </span><span class="sc">{</span>x<span class="sc">:}</span><span class="vs"> &amp; </span><span class="sc">{</span>f(x)<span class="sc">:}</span><span class="vs"> &amp; </span><span class="sc">{</span>dx<span class="sc">:}</span><span class="vs"> &amp; </span><span class="sc">{</span>ordenada(x)<span class="sc">:}</span><span class="vs"> &amp; </span><span class="sc">{</span>x_nuevo<span class="sc">:}</span><span class="vs"> </span><span class="ch">\\</span><span class="vs"> </span><span class="er">\</span><span class="vs">hline &quot;</span></span>
+<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a>        clear_output(wait<span class="op">=</span><span class="va">True</span>)  <span class="co"># ¡Borra la salida anterior!</span></span>
+<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a>        display(Math(tabla <span class="op">+</span> <span class="vs">r&quot;</span><span class="er">\</span><span class="vs">end{array}&quot;</span>))  <span class="co"># Muestra la tabla actualizada</span></span>
+<span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a>        time.sleep(<span class="dv">1</span>)  <span class="co"># Pausa de 1 segundo</span></span>
+<span id="cb24-28"><a href="#cb24-28" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> x_nuevo</span>
+<span id="cb24-29"><a href="#cb24-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-30"><a href="#cb24-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x</span></code></pre></div>
+</div>
+<div class="cell markdown" id="YZsOVJ-zd4b7">
+<p><br></p>
+</div>
+<div class="cell code" data-execution_count="13"
+data-colab="{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:316}"
+id="pnJBKVfJJEFl" data-outputId="42aba72a-d57f-4ffd-9232-ec8f67194f4f">
+<div class="sourceCode" id="cb25"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>newton<span class="op">=</span>raiz(n,i)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>display(Math(<span class="vs">fr&quot;</span><span class="ch">\t</span><span class="vs">ext</span><span class="ch">{{</span><span class="vs">La raíz es aproximadamente: </span><span class="ch">}}</span><span class="vs"> </span><span class="ch">\t</span><span class="vs">extbf</span><span class="ch">{{</span><span class="vs">x</span><span class="ch">}}</span><span class="vs"> </span><span class="ch">\a</span><span class="vs">pprox </span><span class="sc">{</span>newton<span class="sc">}</span><span class="vs"> </span><span class="ch">\t</span><span class="vs">ext</span><span class="ch">{{</span><span class="vs">, en </span><span class="ch">}}</span><span class="vs"> </span><span class="sc">{</span>i<span class="sc">}</span><span class="vs"> </span><span class="ch">\t</span><span class="vs">ext</span><span class="ch">{{</span><span class="vs"> iteraciones</span><span class="dv">.</span><span class="ch">}}</span><span class="vs">&quot;</span>))</span></code></pre></div>
+<div class="output display_data">
+<pre><code>&lt;IPython.core.display.Math object&gt;</code></pre>
+</div>
+<div class="output stream stdout">
+<pre><code>
+
+</code></pre>
+</div>
+<div class="output display_data">
+<pre><code>&lt;IPython.core.display.Math object&gt;</code></pre>
+</div>
+</div>
+<div class="cell markdown" id="MDOlSy_od8kJ">
+<p><br></p>
+</div>
+<section id="tabla-de-ignacio-y-axel" class="cell markdown"
+id="ZmC0yCSKM2lG">
+<h1>Tabla de Ignacio y Axel:</h1>
+<p><img src="media/1a1a3cfd672587910b5567a89fe61e874b9c4689.png"
+alt="Captura de pantalla 2025-06-14 174418.png" /></p>
+</section>
+<div class="cell markdown" id="Lz7Fwmrbd-i6">
+<hr />
+</div>
+<section id="mostrar-tabla-usando-dash-de-plotly" class="cell markdown"
+id="m-0VBO6-FrC6">
+<h1>Mostrar tabla usando Dash de Plotly</h1>
+<ul>
+<li><a href="https://dash.plotly.com/installation">Dash</a> Nos permite
+realizar graficos y tablas interactivas. Usamos un poco de HTML y CSS
+porque lo que arma, si estuviesemos trabajando en Python puro, es un
+servidor con la web app en forma local, es por esto que la función raíz
+cambia para recibir argumentos que serán pasados al
+<em>Callback</em></li>
+</ul>
+<hr />
+<h4 id="explicacion-de-ia-para-callback">Explicacion de IA para
+Callback:</h4>
+<ul>
+<li><p>Es una función normal, pero con un superpoder:</p>
+<ul>
+<li>No se ejecuta inmediatamente (como las funciones comunes).</li>
+<li>Espera a que ocurra algo (un clic, un cambio, un tiempo
+determinado).</li>
+</ul></li>
+</ul>
+<hr />
+<ul>
+<li><p>Por lo tanto, nosotros necesitamos ingresar valores (Input),
+mostrar resultados (Output), saber que pasa (State), en dónde
+(dash_table), mediante un servidor (html), en un contexto (dcc), con qué
+(Dash).</p></li>
+<li><p>Dash crea un objeto, este es <em>app</em>. Como es una web app,
+tiene que tener una intefaz, diseñamos un <a
+href="https://dash.plotly.com/layout">layout</a> con seudo código HTML
+del módulo. La cuál tendrá toda la aplicación en si, Unos contenedor <a
+href="https://dash.plotly.com/dash-html-components/div">html.Div</a> que
+contendrá la introducción de datos mediante <a
+href="https://dash.plotly.com/dash-core-components/input">dcc.Input</a>,
+Un botón que inicie las iteraciones <a
+href="https://dash.plotly.com/dash-html-components/button">html.Button</a>,
+La tabla <a
+href="https://dash.plotly.com/datatable">dash_table.DataTable</a> con
+los nombres de las columnas, una lista vacia dónde almacenar los datos.
+Mediante <a
+href="https://dash.plotly.com/dash-core-components/interval">dcc.Interval</a>
+agregamos ese <code>time.seep(1)</code> que usabamos antes. Guardaremos
+el dato de <code>x_inicial</code> y las<code>iteraciones</code> con <a
+href="https://dash.plotly.com/dash-core-components/store">dcc.store</a>
+las cuales se inicializan en cero con <code>data=0</code> es el
+equivalente a <code>n=i=0</code>. Luego sigue una parte tal cuál estaba
+el código con las funciones siguiendo el algoritmo de Ignacio y Axel,
+tras lo cual aparece el decorador <a
+href="https://dash.plotly.com/basic-callbacks">@app.callback</a> en la
+que le indicamos todo lo que debe observar, Input, Output, State y
+prevenimos que al ejecutar el program se ejecute, mediante el valor
+booleano <code>prevent_initial_call=True</code>.</p></li>
+<li><p>Redefinimos la función raiz para que sea reactiva, antes le
+dabamos los datos, la llamabamos y veiamos como evitar que tire todo el
+resultado al instante usando <em>time</em>. Como primer detonador
+tenemos <code>start_clicks</code> que es cuando le damos al botón, el
+intervalo, luego como antes ingresamos los valores de
+<code>a,b,c,d,n,i</code> pero además como queremos la tabla
+"interactiva" o "iterativa", le indicamos que también la debe observar,
+un <code>contador</code> para comparar con nuestro iterador
+<code>i</code> y el valor <code>x_actual</code> que es el <code>2</code>
+que ingresaron Ignacio o Axel.</p></li>
+<li><p>indicamos que usamos variables globales, creamos el contexto del
+callback <code>ctx</code> <a
+href="https://dash.plotly.com/advanced-callbacks">dash.calllback_context</a>,
+mediante un bucle ternario nos aseguramos que exista y lo almacenamos en
+<code>trigger_id</code>. De existir realizamos lo mismo para la entrada
+de datos. Usamos <a
+href="https://python-reference.readthedocs.io/en/latest/docs/str/replace.html">replace()</a>
+para manejar los signos de la ecuación. Mostrandola tras pulsarse el
+bóton.</p></li>
+<li><p>Si en cambio, el <code>trigger_id</code> está en el intervalo,
+verificamos el contador si ya se paso para mostrar la raíz apróximada
+dada el numero de iteraciones.</p></li>
+<li><p>Luego de esos bucles, seguinos con nuestro código, como antes,
+salvo que en lugar de usar <code>x_ini</code> usamos
+<code>x_actual</code> y lo casteamos a <em>float</em>. También
+veriificamos que a derivada no sea cero, en tal caso avisamos.</p></li>
+<li><p>Almacenamos la nueva raíz en <code>x_nuevo</code> siguiendo el
+excel de los compañeros.</p></li>
+<li><p>Creamos un diccionario el cuál tiene las palabras de la tabla y
+sus significados son los resultados de las cuentas. <a
+href="https://python-reference.readthedocs.io/en/latest/docs/functions/dict.html">dict</a>.
+Tras lo cual devolvemos cada nueva fila hasta cumplir las iteraciones
+que indico el usuario.</p></li>
+<li><p>Dejamos de actualizar la tabla con <a
+href="https://dash.plotly.com/advanced-callbacks">dash.no_update</a>.</p></li>
+<li><p>Finalmente ejecutamos nuestro programa mediante <a
+href="https://docs.python.org/3/tutorial/modules.html#executing-modules-as-scripts">if
+<strong>name</strong> == "<strong>main</strong>":</a> el cuál solo hace
+una cosa, levantar el servidor que corre nuestra aplicación <a
+href="https://dash.plotly.com/devtools">app.run</a> la cuál cómo esta
+sólo funcionará aquí, o en tu PC. Pero no podrás entrar desde tu
+celular, si por ejemplo usamos Jupyter lab en nuestra PC.</p></li>
+<li><p>Y como dicen las leyes de Murphy(resuelto), falla. porque Collab
+no tiene dash, cuando no tenemos determinado software, lo
+instalamos:</p></li>
+</ul>
+<p><br></p>
+</section>
+<div class="cell code" data-execution_count="14"
+data-colab="{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}"
+id="xuxZVN-qVOnk" data-outputId="14aaa453-1079-4afa-d915-23c057fd64ec">
+<div class="sourceCode" id="cb29"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install dash</span></code></pre></div>
+<div class="output stream stdout">
+<pre><code>Requirement already satisfied: dash in c:\users\black\downloads\revistas\.env\lib\site-packages (3.3.0)
+Requirement already satisfied: Flask&lt;3.2,&gt;=1.0.4 in c:\users\black\downloads\revistas\.env\lib\site-packages (from dash) (3.1.2)
+Requirement already satisfied: Werkzeug&lt;3.2 in c:\users\black\downloads\revistas\.env\lib\site-packages (from dash) (3.1.4)
+Requirement already satisfied: plotly&gt;=5.0.0 in c:\users\black\downloads\revistas\.env\lib\site-packages (from dash) (6.5.0)
+Requirement already satisfied: importlib-metadata in c:\users\black\downloads\revistas\.env\lib\site-packages (from dash) (8.7.0)
+Requirement already satisfied: typing_extensions&gt;=4.1.1 in c:\users\black\downloads\revistas\.env\lib\site-packages (from dash) (4.15.0)
+Requirement already satisfied: requests in c:\users\black\downloads\revistas\.env\lib\site-packages (from dash) (2.32.5)
+Requirement already satisfied: retrying in c:\users\black\downloads\revistas\.env\lib\site-packages (from dash) (1.4.2)
+Requirement already satisfied: nest-asyncio in c:\users\black\downloads\revistas\.env\lib\site-packages (from dash) (1.6.0)
+Requirement already satisfied: setuptools in c:\users\black\downloads\revistas\.env\lib\site-packages (from dash) (80.9.0)
+Requirement already satisfied: blinker&gt;=1.9.0 in c:\users\black\downloads\revistas\.env\lib\site-packages (from Flask&lt;3.2,&gt;=1.0.4-&gt;dash) (1.9.0)
+Requirement already satisfied: click&gt;=8.1.3 in c:\users\black\downloads\revistas\.env\lib\site-packages (from Flask&lt;3.2,&gt;=1.0.4-&gt;dash) (8.3.1)
+Requirement already satisfied: itsdangerous&gt;=2.2.0 in c:\users\black\downloads\revistas\.env\lib\site-packages (from Flask&lt;3.2,&gt;=1.0.4-&gt;dash) (2.2.0)
+Requirement already satisfied: jinja2&gt;=3.1.2 in c:\users\black\downloads\revistas\.env\lib\site-packages (from Flask&lt;3.2,&gt;=1.0.4-&gt;dash) (3.1.6)
+Requirement already satisfied: markupsafe&gt;=2.1.1 in c:\users\black\downloads\revistas\.env\lib\site-packages (from Flask&lt;3.2,&gt;=1.0.4-&gt;dash) (3.0.3)
+Requirement already satisfied: colorama in c:\users\black\downloads\revistas\.env\lib\site-packages (from click&gt;=8.1.3-&gt;Flask&lt;3.2,&gt;=1.0.4-&gt;dash) (0.4.6)
+Requirement already satisfied: narwhals&gt;=1.15.1 in c:\users\black\downloads\revistas\.env\lib\site-packages (from plotly&gt;=5.0.0-&gt;dash) (2.14.0)
+Requirement already satisfied: packaging in c:\users\black\downloads\revistas\.env\lib\site-packages (from plotly&gt;=5.0.0-&gt;dash) (25.0)
+Requirement already satisfied: zipp&gt;=3.20 in c:\users\black\downloads\revistas\.env\lib\site-packages (from importlib-metadata-&gt;dash) (3.23.0)
+Requirement already satisfied: charset_normalizer&lt;4,&gt;=2 in c:\users\black\downloads\revistas\.env\lib\site-packages (from requests-&gt;dash) (3.4.4)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in c:\users\black\downloads\revistas\.env\lib\site-packages (from requests-&gt;dash) (3.11)
+Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in c:\users\black\downloads\revistas\.env\lib\site-packages (from requests-&gt;dash) (2.6.2)
+Requirement already satisfied: certifi&gt;=2017.4.17 in c:\users\black\downloads\revistas\.env\lib\site-packages (from requests-&gt;dash) (2025.11.12)
+</code></pre>
+</div>
+</div>
+<div class="cell markdown" id="Hd-louVPeMcK">
+<p><br></p>
+<hr />
+</div>
+<div class="cell code" data-execution_count="16"
+data-colab="{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}"
+id="fc4aF0HlFzJd" data-outputId="898f9ac3-5619-456f-a4ba-c13b8aa2506f">
+<div class="sourceCode" id="cb31"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dash <span class="im">import</span> Dash, html, dcc, dash_table, Input, Output, State</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dash</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> Dash(<span class="va">__name__</span>)</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> b <span class="op">=</span> c <span class="op">=</span> d <span class="op">=</span> n <span class="op">=</span> i <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>funcion <span class="op">=</span> <span class="st">&quot;&quot;</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>app.layout <span class="op">=</span> html.Div([</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>    html.H3(<span class="st">&quot;Método de Newton-Raphson&quot;</span>),</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>    html.Div([</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>        html.Div(<span class="st">&quot;f(x) = (a):&quot;</span>, style<span class="op">=</span>{<span class="st">&#39;display&#39;</span>: <span class="st">&#39;inline-block&#39;</span>, <span class="st">&#39;width&#39;</span>: <span class="st">&#39;80px&#39;</span>}),</span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>        dcc.Input(<span class="bu">id</span><span class="op">=</span><span class="st">&#39;input-a&#39;</span>, <span class="bu">type</span><span class="op">=</span><span class="st">&#39;number&#39;</span>, value<span class="op">=</span><span class="dv">1</span>, style<span class="op">=</span>{<span class="st">&#39;width&#39;</span>: <span class="st">&#39;60px&#39;</span>, <span class="st">&#39;display&#39;</span>: <span class="st">&#39;inline-block&#39;</span>, <span class="st">&#39;marginRight&#39;</span>: <span class="st">&#39;5px&#39;</span>}),</span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>        html.Span(<span class="st">&quot;x³ +&quot;</span>, style<span class="op">=</span>{<span class="st">&#39;display&#39;</span>: <span class="st">&#39;inline-block&#39;</span>, <span class="st">&#39;width&#39;</span>: <span class="st">&#39;40px&#39;</span>}),</span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>        dcc.Input(<span class="bu">id</span><span class="op">=</span><span class="st">&#39;input-b&#39;</span>, <span class="bu">type</span><span class="op">=</span><span class="st">&#39;number&#39;</span>, value<span class="op">=</span><span class="dv">0</span>, style<span class="op">=</span>{<span class="st">&#39;width&#39;</span>: <span class="st">&#39;60px&#39;</span>, <span class="st">&#39;display&#39;</span>: <span class="st">&#39;inline-block&#39;</span>, <span class="st">&#39;marginRight&#39;</span>: <span class="st">&#39;5px&#39;</span>}),</span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>        html.Span(<span class="st">&quot;x² +&quot;</span>, style<span class="op">=</span>{<span class="st">&#39;display&#39;</span>: <span class="st">&#39;inline-block&#39;</span>, <span class="st">&#39;width&#39;</span>: <span class="st">&#39;40px&#39;</span>}),</span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>        dcc.Input(<span class="bu">id</span><span class="op">=</span><span class="st">&#39;input-c&#39;</span>, <span class="bu">type</span><span class="op">=</span><span class="st">&#39;number&#39;</span>, value<span class="op">=</span><span class="dv">0</span>, style<span class="op">=</span>{<span class="st">&#39;width&#39;</span>: <span class="st">&#39;60px&#39;</span>, <span class="st">&#39;display&#39;</span>: <span class="st">&#39;inline-block&#39;</span>, <span class="st">&#39;marginRight&#39;</span>: <span class="st">&#39;5px&#39;</span>}),</span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a>        html.Span(<span class="st">&quot;x +&quot;</span>, style<span class="op">=</span>{<span class="st">&#39;display&#39;</span>: <span class="st">&#39;inline-block&#39;</span>, <span class="st">&#39;width&#39;</span>: <span class="st">&#39;40px&#39;</span>}),</span>
+<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a>        dcc.Input(<span class="bu">id</span><span class="op">=</span><span class="st">&#39;input-d&#39;</span>, <span class="bu">type</span><span class="op">=</span><span class="st">&#39;number&#39;</span>, value<span class="op">=</span><span class="dv">0</span>, style<span class="op">=</span>{<span class="st">&#39;width&#39;</span>: <span class="st">&#39;60px&#39;</span>, <span class="st">&#39;display&#39;</span>: <span class="st">&#39;inline-block&#39;</span>})</span>
+<span id="cb31-23"><a href="#cb31-23" aria-hidden="true" tabindex="-1"></a>        ], style<span class="op">=</span>{<span class="st">&#39;marginBottom&#39;</span>: <span class="st">&#39;15px&#39;</span>}),</span>
+<span id="cb31-24"><a href="#cb31-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-25"><a href="#cb31-25" aria-hidden="true" tabindex="-1"></a>       html.Div([</span>
+<span id="cb31-26"><a href="#cb31-26" aria-hidden="true" tabindex="-1"></a>            html.Label(<span class="st">&quot;Valor inicial (x₀):&quot;</span>, style<span class="op">=</span>{<span class="st">&#39;display&#39;</span>: <span class="st">&#39;inline-block&#39;</span>, <span class="st">&#39;width&#39;</span>: <span class="st">&#39;150px&#39;</span>}),</span>
+<span id="cb31-27"><a href="#cb31-27" aria-hidden="true" tabindex="-1"></a>            dcc.Input(<span class="bu">id</span><span class="op">=</span><span class="st">&#39;input-n&#39;</span>, <span class="bu">type</span><span class="op">=</span><span class="st">&#39;number&#39;</span>, value<span class="op">=</span><span class="dv">2</span>, style<span class="op">=</span>{<span class="st">&#39;width&#39;</span>: <span class="st">&#39;80px&#39;</span>, <span class="st">&#39;display&#39;</span>: <span class="st">&#39;inline-block&#39;</span>})</span>
+<span id="cb31-28"><a href="#cb31-28" aria-hidden="true" tabindex="-1"></a>        ], style<span class="op">=</span>{<span class="st">&#39;marginBottom&#39;</span>: <span class="st">&#39;10px&#39;</span>}),</span>
+<span id="cb31-29"><a href="#cb31-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-30"><a href="#cb31-30" aria-hidden="true" tabindex="-1"></a>        html.Div([</span>
+<span id="cb31-31"><a href="#cb31-31" aria-hidden="true" tabindex="-1"></a>            html.Label(<span class="st">&quot;Número de iteraciones:&quot;</span>, style<span class="op">=</span>{<span class="st">&#39;display&#39;</span>: <span class="st">&#39;inline-block&#39;</span>, <span class="st">&#39;width&#39;</span>: <span class="st">&#39;150px&#39;</span>}),</span>
+<span id="cb31-32"><a href="#cb31-32" aria-hidden="true" tabindex="-1"></a>            dcc.Input(<span class="bu">id</span><span class="op">=</span><span class="st">&#39;input-i&#39;</span>, <span class="bu">type</span><span class="op">=</span><span class="st">&#39;number&#39;</span>, value<span class="op">=</span><span class="dv">9</span>, style<span class="op">=</span>{<span class="st">&#39;width&#39;</span>: <span class="st">&#39;80px&#39;</span>, <span class="st">&#39;display&#39;</span>: <span class="st">&#39;inline-block&#39;</span>})</span>
+<span id="cb31-33"><a href="#cb31-33" aria-hidden="true" tabindex="-1"></a>        ], style<span class="op">=</span>{<span class="st">&#39;marginBottom&#39;</span>: <span class="st">&#39;15px&#39;</span>}),</span>
+<span id="cb31-34"><a href="#cb31-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-35"><a href="#cb31-35" aria-hidden="true" tabindex="-1"></a>        html.Button(<span class="st">&quot;Iniciar&quot;</span>, <span class="bu">id</span><span class="op">=</span><span class="st">&quot;start-btn&quot;</span>, n_clicks<span class="op">=</span><span class="dv">0</span>),</span>
+<span id="cb31-36"><a href="#cb31-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-37"><a href="#cb31-37" aria-hidden="true" tabindex="-1"></a>        html.Div(<span class="bu">id</span><span class="op">=</span><span class="st">&#39;funcion-math&#39;</span>),</span>
+<span id="cb31-38"><a href="#cb31-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-39"><a href="#cb31-39" aria-hidden="true" tabindex="-1"></a>    dash_table.DataTable(</span>
+<span id="cb31-40"><a href="#cb31-40" aria-hidden="true" tabindex="-1"></a>        <span class="bu">id</span><span class="op">=</span><span class="st">&quot;tabla-newton&quot;</span>,</span>
+<span id="cb31-41"><a href="#cb31-41" aria-hidden="true" tabindex="-1"></a>        columns<span class="op">=</span>[</span>
+<span id="cb31-42"><a href="#cb31-42" aria-hidden="true" tabindex="-1"></a>            {<span class="st">&quot;name&quot;</span>: <span class="st">&quot;Iteración&quot;</span>, <span class="st">&quot;id&quot;</span>: <span class="st">&quot;iterador&quot;</span>},</span>
+<span id="cb31-43"><a href="#cb31-43" aria-hidden="true" tabindex="-1"></a>            {<span class="st">&quot;name&quot;</span>: <span class="st">&quot;x&quot;</span>, <span class="st">&quot;id&quot;</span>: <span class="st">&quot;x&quot;</span>},</span>
+<span id="cb31-44"><a href="#cb31-44" aria-hidden="true" tabindex="-1"></a>            {<span class="st">&quot;name&quot;</span>: <span class="st">&quot;f(x)&quot;</span>, <span class="st">&quot;id&quot;</span>: <span class="st">&quot;fx&quot;</span>},</span>
+<span id="cb31-45"><a href="#cb31-45" aria-hidden="true" tabindex="-1"></a>            {<span class="st">&quot;name&quot;</span>: <span class="st">&quot;Pendiente en (x, f(x))&quot;</span>, <span class="st">&quot;id&quot;</span>: <span class="st">&quot;derivada&quot;</span>},</span>
+<span id="cb31-46"><a href="#cb31-46" aria-hidden="true" tabindex="-1"></a>            {<span class="st">&quot;name&quot;</span>: <span class="st">&quot;Ordenada de la tangente&quot;</span>, <span class="st">&quot;id&quot;</span>: <span class="st">&quot;ordenada&quot;</span>},</span>
+<span id="cb31-47"><a href="#cb31-47" aria-hidden="true" tabindex="-1"></a>            {<span class="st">&quot;name&quot;</span>: <span class="st">&quot;Raíz de la tangente&quot;</span>, <span class="st">&quot;id&quot;</span>: <span class="st">&quot;x_nuevo&quot;</span>},</span>
+<span id="cb31-48"><a href="#cb31-48" aria-hidden="true" tabindex="-1"></a>        ],</span>
+<span id="cb31-49"><a href="#cb31-49" aria-hidden="true" tabindex="-1"></a>        data<span class="op">=</span>[],</span>
+<span id="cb31-50"><a href="#cb31-50" aria-hidden="true" tabindex="-1"></a>        style_table<span class="op">=</span>{<span class="st">&quot;marginTop&quot;</span>: <span class="st">&quot;20px&quot;</span>},</span>
+<span id="cb31-51"><a href="#cb31-51" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb31-52"><a href="#cb31-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-53"><a href="#cb31-53" aria-hidden="true" tabindex="-1"></a>    dcc.Interval(<span class="bu">id</span><span class="op">=</span><span class="st">&quot;intervalo&quot;</span>, interval<span class="op">=</span><span class="dv">1000</span>, disabled<span class="op">=</span><span class="va">True</span>),</span>
+<span id="cb31-54"><a href="#cb31-54" aria-hidden="true" tabindex="-1"></a>    dcc.Store(<span class="bu">id</span><span class="op">=</span><span class="st">&quot;contador&quot;</span>, data<span class="op">=</span><span class="dv">0</span>),</span>
+<span id="cb31-55"><a href="#cb31-55" aria-hidden="true" tabindex="-1"></a>    dcc.Store(<span class="bu">id</span><span class="op">=</span><span class="st">&quot;x-actual&quot;</span>, data<span class="op">=</span><span class="dv">0</span>),</span>
+<span id="cb31-56"><a href="#cb31-56" aria-hidden="true" tabindex="-1"></a>    html.Div(<span class="bu">id</span><span class="op">=</span><span class="st">&#39;resultado-final&#39;</span>)</span>
+<span id="cb31-57"><a href="#cb31-57" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb31-58"><a href="#cb31-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-59"><a href="#cb31-59" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(x):</span>
+<span id="cb31-60"><a href="#cb31-60" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a<span class="op">*</span>x<span class="op">**</span><span class="dv">3</span> <span class="op">+</span> b<span class="op">*</span>x<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> c<span class="op">*</span>x <span class="op">+</span> d</span>
+<span id="cb31-61"><a href="#cb31-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-62"><a href="#cb31-62" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> derivada(x):</span>
+<span id="cb31-63"><a href="#cb31-63" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">3</span><span class="op">*</span>a<span class="op">*</span>x<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> <span class="dv">2</span><span class="op">*</span>b<span class="op">*</span>x <span class="op">+</span> c</span>
+<span id="cb31-64"><a href="#cb31-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-65"><a href="#cb31-65" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ordenada(x):</span>
+<span id="cb31-66"><a href="#cb31-66" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> f(x) <span class="op">-</span> derivada(x) <span class="op">*</span> x</span>
+<span id="cb31-67"><a href="#cb31-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-68"><a href="#cb31-68" aria-hidden="true" tabindex="-1"></a><span class="at">@app.callback</span>(</span>
+<span id="cb31-69"><a href="#cb31-69" aria-hidden="true" tabindex="-1"></a>    Output(<span class="st">&quot;funcion-math&quot;</span>, <span class="st">&quot;children&quot;</span>),</span>
+<span id="cb31-70"><a href="#cb31-70" aria-hidden="true" tabindex="-1"></a>    Output(<span class="st">&quot;tabla-newton&quot;</span>, <span class="st">&quot;data&quot;</span>),</span>
+<span id="cb31-71"><a href="#cb31-71" aria-hidden="true" tabindex="-1"></a>    Output(<span class="st">&quot;contador&quot;</span>, <span class="st">&quot;data&quot;</span>),</span>
+<span id="cb31-72"><a href="#cb31-72" aria-hidden="true" tabindex="-1"></a>    Output(<span class="st">&quot;intervalo&quot;</span>, <span class="st">&quot;disabled&quot;</span>),</span>
+<span id="cb31-73"><a href="#cb31-73" aria-hidden="true" tabindex="-1"></a>    Output(<span class="st">&quot;x-actual&quot;</span>, <span class="st">&quot;data&quot;</span>),</span>
+<span id="cb31-74"><a href="#cb31-74" aria-hidden="true" tabindex="-1"></a>    Output(<span class="st">&quot;resultado-final&quot;</span>, <span class="st">&quot;children&quot;</span>),</span>
+<span id="cb31-75"><a href="#cb31-75" aria-hidden="true" tabindex="-1"></a>    Input(<span class="st">&quot;start-btn&quot;</span>, <span class="st">&quot;n_clicks&quot;</span>),</span>
+<span id="cb31-76"><a href="#cb31-76" aria-hidden="true" tabindex="-1"></a>    Input(<span class="st">&quot;intervalo&quot;</span>, <span class="st">&quot;n_intervals&quot;</span>),</span>
+<span id="cb31-77"><a href="#cb31-77" aria-hidden="true" tabindex="-1"></a>    State(<span class="st">&quot;input-a&quot;</span>, <span class="st">&quot;value&quot;</span>),</span>
+<span id="cb31-78"><a href="#cb31-78" aria-hidden="true" tabindex="-1"></a>    State(<span class="st">&quot;input-b&quot;</span>, <span class="st">&quot;value&quot;</span>),</span>
+<span id="cb31-79"><a href="#cb31-79" aria-hidden="true" tabindex="-1"></a>    State(<span class="st">&quot;input-c&quot;</span>, <span class="st">&quot;value&quot;</span>),</span>
+<span id="cb31-80"><a href="#cb31-80" aria-hidden="true" tabindex="-1"></a>    State(<span class="st">&quot;input-d&quot;</span>, <span class="st">&quot;value&quot;</span>),</span>
+<span id="cb31-81"><a href="#cb31-81" aria-hidden="true" tabindex="-1"></a>    State(<span class="st">&quot;input-n&quot;</span>, <span class="st">&quot;value&quot;</span>),</span>
+<span id="cb31-82"><a href="#cb31-82" aria-hidden="true" tabindex="-1"></a>    State(<span class="st">&quot;input-i&quot;</span>, <span class="st">&quot;value&quot;</span>),</span>
+<span id="cb31-83"><a href="#cb31-83" aria-hidden="true" tabindex="-1"></a>    State(<span class="st">&quot;tabla-newton&quot;</span>, <span class="st">&quot;data&quot;</span>),</span>
+<span id="cb31-84"><a href="#cb31-84" aria-hidden="true" tabindex="-1"></a>    State(<span class="st">&quot;contador&quot;</span>, <span class="st">&quot;data&quot;</span>),</span>
+<span id="cb31-85"><a href="#cb31-85" aria-hidden="true" tabindex="-1"></a>    State(<span class="st">&quot;x-actual&quot;</span>, <span class="st">&quot;data&quot;</span>),</span>
+<span id="cb31-86"><a href="#cb31-86" aria-hidden="true" tabindex="-1"></a>    prevent_initial_call<span class="op">=</span><span class="va">True</span></span>
+<span id="cb31-87"><a href="#cb31-87" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb31-88"><a href="#cb31-88" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> raiz(start_clicks, n_intervals, a_val, b_val, c_val, d_val, n_val, i_val, tabla, contador, x_actual):</span>
+<span id="cb31-89"><a href="#cb31-89" aria-hidden="true" tabindex="-1"></a>    <span class="kw">global</span> a, b, c, d, n, i, funcion</span>
+<span id="cb31-90"><a href="#cb31-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-91"><a href="#cb31-91" aria-hidden="true" tabindex="-1"></a>    ctx <span class="op">=</span> dash.callback_context</span>
+<span id="cb31-92"><a href="#cb31-92" aria-hidden="true" tabindex="-1"></a>    trigger_id <span class="op">=</span> ctx.triggered[<span class="dv">0</span>][<span class="st">&#39;prop_id&#39;</span>].split(<span class="st">&#39;.&#39;</span>)[<span class="dv">0</span>] <span class="cf">if</span> ctx.triggered <span class="cf">else</span> <span class="va">None</span></span>
+<span id="cb31-93"><a href="#cb31-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-94"><a href="#cb31-94" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> trigger_id <span class="op">==</span> <span class="st">&quot;start-btn&quot;</span>:</span>
+<span id="cb31-95"><a href="#cb31-95" aria-hidden="true" tabindex="-1"></a>        a <span class="op">=</span> <span class="bu">float</span>(a_val) <span class="cf">if</span> a_val <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="cf">else</span> <span class="dv">0</span></span>
+<span id="cb31-96"><a href="#cb31-96" aria-hidden="true" tabindex="-1"></a>        b <span class="op">=</span> <span class="bu">float</span>(b_val) <span class="cf">if</span> b_val <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="cf">else</span> <span class="dv">0</span></span>
+<span id="cb31-97"><a href="#cb31-97" aria-hidden="true" tabindex="-1"></a>        c <span class="op">=</span> <span class="bu">float</span>(c_val) <span class="cf">if</span> c_val <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="cf">else</span> <span class="dv">0</span></span>
+<span id="cb31-98"><a href="#cb31-98" aria-hidden="true" tabindex="-1"></a>        d <span class="op">=</span> <span class="bu">float</span>(d_val) <span class="cf">if</span> d_val <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="cf">else</span> <span class="dv">0</span></span>
+<span id="cb31-99"><a href="#cb31-99" aria-hidden="true" tabindex="-1"></a>        n <span class="op">=</span> <span class="bu">float</span>(n_val) <span class="cf">if</span> n_val <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="cf">else</span> <span class="dv">0</span></span>
+<span id="cb31-100"><a href="#cb31-100" aria-hidden="true" tabindex="-1"></a>        i <span class="op">=</span> <span class="bu">int</span>(i_val) <span class="cf">if</span> i_val <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="cf">else</span> <span class="dv">0</span></span>
+<span id="cb31-101"><a href="#cb31-101" aria-hidden="true" tabindex="-1"></a>        funcion <span class="op">=</span> <span class="ss">f&quot;</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">x³ </span><span class="sc">{</span>b<span class="sc">:+}</span><span class="ss">x² </span><span class="sc">{</span>c<span class="sc">:+}</span><span class="ss">x </span><span class="sc">{</span>d<span class="sc">:+}</span><span class="ss">&quot;</span>.replace(<span class="st">&quot;+&quot;</span>, <span class="st">&quot; + &quot;</span>).replace(<span class="st">&quot;-&quot;</span>, <span class="st">&quot; - &quot;</span>)</span>
+<span id="cb31-102"><a href="#cb31-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-103"><a href="#cb31-103" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> [</span>
+<span id="cb31-104"><a href="#cb31-104" aria-hidden="true" tabindex="-1"></a>            html.Div([<span class="ss">f&quot;f(x) = </span><span class="sc">{</span>funcion<span class="sc">}</span><span class="ss">&quot;</span>], style<span class="op">=</span>{<span class="st">&#39;fontWeight&#39;</span>: <span class="st">&#39;bold&#39;</span>}),</span>
+<span id="cb31-105"><a href="#cb31-105" aria-hidden="true" tabindex="-1"></a>            [],</span>
+<span id="cb31-106"><a href="#cb31-106" aria-hidden="true" tabindex="-1"></a>            <span class="dv">0</span>,</span>
+<span id="cb31-107"><a href="#cb31-107" aria-hidden="true" tabindex="-1"></a>            <span class="va">False</span>,</span>
+<span id="cb31-108"><a href="#cb31-108" aria-hidden="true" tabindex="-1"></a>            n,</span>
+<span id="cb31-109"><a href="#cb31-109" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;&quot;</span></span>
+<span id="cb31-110"><a href="#cb31-110" aria-hidden="true" tabindex="-1"></a>        ]</span>
+<span id="cb31-111"><a href="#cb31-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-112"><a href="#cb31-112" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> trigger_id <span class="op">==</span> <span class="st">&quot;intervalo&quot;</span>:</span>
+<span id="cb31-113"><a href="#cb31-113" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> contador <span class="op">&gt;=</span> i:</span>
+<span id="cb31-114"><a href="#cb31-114" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> [</span>
+<span id="cb31-115"><a href="#cb31-115" aria-hidden="true" tabindex="-1"></a>                dash.no_update,</span>
+<span id="cb31-116"><a href="#cb31-116" aria-hidden="true" tabindex="-1"></a>                dash.no_update,</span>
+<span id="cb31-117"><a href="#cb31-117" aria-hidden="true" tabindex="-1"></a>                dash.no_update,</span>
+<span id="cb31-118"><a href="#cb31-118" aria-hidden="true" tabindex="-1"></a>                <span class="va">True</span>,</span>
+<span id="cb31-119"><a href="#cb31-119" aria-hidden="true" tabindex="-1"></a>                dash.no_update,</span>
+<span id="cb31-120"><a href="#cb31-120" aria-hidden="true" tabindex="-1"></a>                <span class="ss">f&quot;Raíz aproximada: </span><span class="sc">{</span>x_actual<span class="sc">}</span><span class="ss"> (iteraciones: </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">)&quot;</span></span>
+<span id="cb31-121"><a href="#cb31-121" aria-hidden="true" tabindex="-1"></a>            ]</span>
+<span id="cb31-122"><a href="#cb31-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-123"><a href="#cb31-123" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> <span class="bu">float</span>(x_actual)</span>
+<span id="cb31-124"><a href="#cb31-124" aria-hidden="true" tabindex="-1"></a>        fx <span class="op">=</span> f(x)</span>
+<span id="cb31-125"><a href="#cb31-125" aria-hidden="true" tabindex="-1"></a>        dx <span class="op">=</span> derivada(x)</span>
+<span id="cb31-126"><a href="#cb31-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-127"><a href="#cb31-127" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> dx <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb31-128"><a href="#cb31-128" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> [</span>
+<span id="cb31-129"><a href="#cb31-129" aria-hidden="true" tabindex="-1"></a>                dash.no_update,</span>
+<span id="cb31-130"><a href="#cb31-130" aria-hidden="true" tabindex="-1"></a>                dash.no_update,</span>
+<span id="cb31-131"><a href="#cb31-131" aria-hidden="true" tabindex="-1"></a>                dash.no_update,</span>
+<span id="cb31-132"><a href="#cb31-132" aria-hidden="true" tabindex="-1"></a>                <span class="va">True</span>,</span>
+<span id="cb31-133"><a href="#cb31-133" aria-hidden="true" tabindex="-1"></a>                dash.no_update,</span>
+<span id="cb31-134"><a href="#cb31-134" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;Error: Derivada cero&quot;</span></span>
+<span id="cb31-135"><a href="#cb31-135" aria-hidden="true" tabindex="-1"></a>            ]</span>
+<span id="cb31-136"><a href="#cb31-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-137"><a href="#cb31-137" aria-hidden="true" tabindex="-1"></a>        x_nuevo <span class="op">=</span> <span class="op">-</span>ordenada(x) <span class="op">/</span> derivada(x)</span>
+<span id="cb31-138"><a href="#cb31-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-139"><a href="#cb31-139" aria-hidden="true" tabindex="-1"></a>        nueva_fila <span class="op">=</span> {</span>
+<span id="cb31-140"><a href="#cb31-140" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;iterador&quot;</span>: contador <span class="op">+</span> <span class="dv">1</span>,</span>
+<span id="cb31-141"><a href="#cb31-141" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;x&quot;</span>: <span class="ss">f&quot;</span><span class="sc">{</span>x<span class="sc">}</span><span class="ss">&quot;</span>,</span>
+<span id="cb31-142"><a href="#cb31-142" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;fx&quot;</span>: <span class="ss">f&quot;</span><span class="sc">{</span>fx<span class="sc">}</span><span class="ss">&quot;</span>,</span>
+<span id="cb31-143"><a href="#cb31-143" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;derivada&quot;</span>: <span class="ss">f&quot;</span><span class="sc">{</span>dx<span class="sc">}</span><span class="ss">&quot;</span>,</span>
+<span id="cb31-144"><a href="#cb31-144" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;ordenada&quot;</span>: <span class="ss">f&quot;</span><span class="sc">{</span>ordenada(x)<span class="sc">}</span><span class="ss">&quot;</span>,</span>
+<span id="cb31-145"><a href="#cb31-145" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;x_nuevo&quot;</span>: <span class="ss">f&quot;</span><span class="sc">{</span>x_nuevo<span class="sc">}</span><span class="ss">&quot;</span></span>
+<span id="cb31-146"><a href="#cb31-146" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb31-147"><a href="#cb31-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-148"><a href="#cb31-148" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> [</span>
+<span id="cb31-149"><a href="#cb31-149" aria-hidden="true" tabindex="-1"></a>            dash.no_update,</span>
+<span id="cb31-150"><a href="#cb31-150" aria-hidden="true" tabindex="-1"></a>            tabla <span class="op">+</span> [nueva_fila],</span>
+<span id="cb31-151"><a href="#cb31-151" aria-hidden="true" tabindex="-1"></a>            contador <span class="op">+</span> <span class="dv">1</span>,</span>
+<span id="cb31-152"><a href="#cb31-152" aria-hidden="true" tabindex="-1"></a>            <span class="va">False</span>,</span>
+<span id="cb31-153"><a href="#cb31-153" aria-hidden="true" tabindex="-1"></a>            x_nuevo,</span>
+<span id="cb31-154"><a href="#cb31-154" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;&quot;</span></span>
+<span id="cb31-155"><a href="#cb31-155" aria-hidden="true" tabindex="-1"></a>        ]</span>
+<span id="cb31-156"><a href="#cb31-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-157"><a href="#cb31-157" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> dash.no_update</span>
+<span id="cb31-158"><a href="#cb31-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-159"><a href="#cb31-159" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>:</span>
+<span id="cb31-160"><a href="#cb31-160" aria-hidden="true" tabindex="-1"></a>    app.run(port<span class="op">=</span><span class="st">&quot;8085&quot;</span>,debug<span class="op">=</span><span class="va">False</span>)</span></code></pre></div>
+<div class="output display_data">
+
+        <iframe
+            width="100%"
+            height="650"
+            src="http://127.0.0.1:8085/"
+            frameborder="0"
+            allowfullscreen
+            
+        ></iframe>
+        
+</div>
+</div>
+<div class="cell markdown" id="_3it1df-eUmo">
+<p><br></p>
+</div>
+<section id="mostrar-un-gráfico" class="cell markdown"
+id="9B0z3GIkI-KD">
+<h1>Mostrar un gráfico:</h1>
+<hr />
+<ul>
+<li><a
+href="https://matplotlib.org/stable/index.html">Matpllotib</a></li>
+<li><a href="https://plotly.com/python/getting-started/">Plotly</a></li>
+<li><a href="https://dash.plotly.com/">Dash</a></li>
+</ul>
+<p><br></p>
+</section>
+<div class="cell code" data-execution_count="17"
+data-colab="{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}"
+id="hayov1Q9JVQ2" data-outputId="560d4299-c32f-4abe-fb23-899274e25497">
+<div class="sourceCode" id="cb32"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dash <span class="im">import</span> Dash, html, dcc, dash_table, Input, Output, State</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dash</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.graph_objs <span class="im">as</span> go</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> Dash(<span class="va">__name__</span>)</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> b <span class="op">=</span> c <span class="op">=</span> d <span class="op">=</span> n <span class="op">=</span> i <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>funcion <span class="op">=</span> <span class="st">&quot;&quot;</span></span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>app.layout <span class="op">=</span> html.Div([</span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>    html.H3(<span class="st">&quot;Método de Newton-Raphson&quot;</span>),</span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>    html.Div([</span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>        html.Div(<span class="st">&quot;f(x) = (a):&quot;</span>, style<span class="op">=</span>{<span class="st">&#39;display&#39;</span>: <span class="st">&#39;inline-block&#39;</span>, <span class="st">&#39;width&#39;</span>: <span class="st">&#39;80px&#39;</span>}),</span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a>        dcc.Input(<span class="bu">id</span><span class="op">=</span><span class="st">&#39;input-a&#39;</span>, <span class="bu">type</span><span class="op">=</span><span class="st">&#39;number&#39;</span>, value<span class="op">=</span><span class="dv">1</span>, style<span class="op">=</span>{<span class="st">&#39;width&#39;</span>: <span class="st">&#39;60px&#39;</span>, <span class="st">&#39;display&#39;</span>: <span class="st">&#39;inline-block&#39;</span>, <span class="st">&#39;marginRight&#39;</span>: <span class="st">&#39;5px&#39;</span>}),</span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a>        html.Span(<span class="st">&quot;x³ +&quot;</span>, style<span class="op">=</span>{<span class="st">&#39;display&#39;</span>: <span class="st">&#39;inline-block&#39;</span>, <span class="st">&#39;width&#39;</span>: <span class="st">&#39;40px&#39;</span>}),</span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a>        dcc.Input(<span class="bu">id</span><span class="op">=</span><span class="st">&#39;input-b&#39;</span>, <span class="bu">type</span><span class="op">=</span><span class="st">&#39;number&#39;</span>, value<span class="op">=</span><span class="dv">0</span>, style<span class="op">=</span>{<span class="st">&#39;width&#39;</span>: <span class="st">&#39;60px&#39;</span>, <span class="st">&#39;display&#39;</span>: <span class="st">&#39;inline-block&#39;</span>, <span class="st">&#39;marginRight&#39;</span>: <span class="st">&#39;5px&#39;</span>}),</span>
+<span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a>        html.Span(<span class="st">&quot;x² +&quot;</span>, style<span class="op">=</span>{<span class="st">&#39;display&#39;</span>: <span class="st">&#39;inline-block&#39;</span>, <span class="st">&#39;width&#39;</span>: <span class="st">&#39;40px&#39;</span>}),</span>
+<span id="cb32-20"><a href="#cb32-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-21"><a href="#cb32-21" aria-hidden="true" tabindex="-1"></a>        dcc.Input(<span class="bu">id</span><span class="op">=</span><span class="st">&#39;input-c&#39;</span>, <span class="bu">type</span><span class="op">=</span><span class="st">&#39;number&#39;</span>, value<span class="op">=</span><span class="dv">0</span>, style<span class="op">=</span>{<span class="st">&#39;width&#39;</span>: <span class="st">&#39;60px&#39;</span>, <span class="st">&#39;display&#39;</span>: <span class="st">&#39;inline-block&#39;</span>, <span class="st">&#39;marginRight&#39;</span>: <span class="st">&#39;5px&#39;</span>}),</span>
+<span id="cb32-22"><a href="#cb32-22" aria-hidden="true" tabindex="-1"></a>        html.Span(<span class="st">&quot;x +&quot;</span>, style<span class="op">=</span>{<span class="st">&#39;display&#39;</span>: <span class="st">&#39;inline-block&#39;</span>, <span class="st">&#39;width&#39;</span>: <span class="st">&#39;40px&#39;</span>}),</span>
+<span id="cb32-23"><a href="#cb32-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-24"><a href="#cb32-24" aria-hidden="true" tabindex="-1"></a>        dcc.Input(<span class="bu">id</span><span class="op">=</span><span class="st">&#39;input-d&#39;</span>, <span class="bu">type</span><span class="op">=</span><span class="st">&#39;number&#39;</span>, value<span class="op">=</span><span class="dv">0</span>, style<span class="op">=</span>{<span class="st">&#39;width&#39;</span>: <span class="st">&#39;60px&#39;</span>, <span class="st">&#39;display&#39;</span>: <span class="st">&#39;inline-block&#39;</span>})</span>
+<span id="cb32-25"><a href="#cb32-25" aria-hidden="true" tabindex="-1"></a>        ], style<span class="op">=</span>{<span class="st">&#39;marginBottom&#39;</span>: <span class="st">&#39;15px&#39;</span>}),</span>
+<span id="cb32-26"><a href="#cb32-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-27"><a href="#cb32-27" aria-hidden="true" tabindex="-1"></a>       html.Div([</span>
+<span id="cb32-28"><a href="#cb32-28" aria-hidden="true" tabindex="-1"></a>            html.Label(<span class="st">&quot;Valor inicial (x₀):&quot;</span>, style<span class="op">=</span>{<span class="st">&#39;display&#39;</span>: <span class="st">&#39;inline-block&#39;</span>, <span class="st">&#39;width&#39;</span>: <span class="st">&#39;150px&#39;</span>}),</span>
+<span id="cb32-29"><a href="#cb32-29" aria-hidden="true" tabindex="-1"></a>            dcc.Input(<span class="bu">id</span><span class="op">=</span><span class="st">&#39;input-n&#39;</span>, <span class="bu">type</span><span class="op">=</span><span class="st">&#39;number&#39;</span>, value<span class="op">=</span><span class="dv">2</span>, style<span class="op">=</span>{<span class="st">&#39;width&#39;</span>: <span class="st">&#39;80px&#39;</span>, <span class="st">&#39;display&#39;</span>: <span class="st">&#39;inline-block&#39;</span>})</span>
+<span id="cb32-30"><a href="#cb32-30" aria-hidden="true" tabindex="-1"></a>        ], style<span class="op">=</span>{<span class="st">&#39;marginBottom&#39;</span>: <span class="st">&#39;10px&#39;</span>}),</span>
+<span id="cb32-31"><a href="#cb32-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-32"><a href="#cb32-32" aria-hidden="true" tabindex="-1"></a>        html.Div([</span>
+<span id="cb32-33"><a href="#cb32-33" aria-hidden="true" tabindex="-1"></a>            html.Label(<span class="st">&quot;Número de iteraciones:&quot;</span>, style<span class="op">=</span>{<span class="st">&#39;display&#39;</span>: <span class="st">&#39;inline-block&#39;</span>, <span class="st">&#39;width&#39;</span>: <span class="st">&#39;150px&#39;</span>}),</span>
+<span id="cb32-34"><a href="#cb32-34" aria-hidden="true" tabindex="-1"></a>            dcc.Input(<span class="bu">id</span><span class="op">=</span><span class="st">&#39;input-i&#39;</span>, <span class="bu">type</span><span class="op">=</span><span class="st">&#39;number&#39;</span>, value<span class="op">=</span><span class="dv">9</span>, style<span class="op">=</span>{<span class="st">&#39;width&#39;</span>: <span class="st">&#39;80px&#39;</span>, <span class="st">&#39;display&#39;</span>: <span class="st">&#39;inline-block&#39;</span>})</span>
+<span id="cb32-35"><a href="#cb32-35" aria-hidden="true" tabindex="-1"></a>        ], style<span class="op">=</span>{<span class="st">&#39;marginBottom&#39;</span>: <span class="st">&#39;15px&#39;</span>}),</span>
+<span id="cb32-36"><a href="#cb32-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-37"><a href="#cb32-37" aria-hidden="true" tabindex="-1"></a>        html.Button(<span class="st">&quot;Iniciar&quot;</span>, <span class="bu">id</span><span class="op">=</span><span class="st">&quot;start-btn&quot;</span>, n_clicks<span class="op">=</span><span class="dv">0</span>),</span>
+<span id="cb32-38"><a href="#cb32-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-39"><a href="#cb32-39" aria-hidden="true" tabindex="-1"></a>        html.Div(<span class="bu">id</span><span class="op">=</span><span class="st">&#39;funcion-math&#39;</span>),</span>
+<span id="cb32-40"><a href="#cb32-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-41"><a href="#cb32-41" aria-hidden="true" tabindex="-1"></a>    dash_table.DataTable(</span>
+<span id="cb32-42"><a href="#cb32-42" aria-hidden="true" tabindex="-1"></a>        <span class="bu">id</span><span class="op">=</span><span class="st">&quot;tabla-newton&quot;</span>,</span>
+<span id="cb32-43"><a href="#cb32-43" aria-hidden="true" tabindex="-1"></a>        columns<span class="op">=</span>[</span>
+<span id="cb32-44"><a href="#cb32-44" aria-hidden="true" tabindex="-1"></a>            {<span class="st">&quot;name&quot;</span>: <span class="st">&quot;Iteración&quot;</span>, <span class="st">&quot;id&quot;</span>: <span class="st">&quot;iterador&quot;</span>},</span>
+<span id="cb32-45"><a href="#cb32-45" aria-hidden="true" tabindex="-1"></a>            {<span class="st">&quot;name&quot;</span>: <span class="st">&quot;x&quot;</span>, <span class="st">&quot;id&quot;</span>: <span class="st">&quot;x&quot;</span>},</span>
+<span id="cb32-46"><a href="#cb32-46" aria-hidden="true" tabindex="-1"></a>            {<span class="st">&quot;name&quot;</span>: <span class="st">&quot;f(x)&quot;</span>, <span class="st">&quot;id&quot;</span>: <span class="st">&quot;fx&quot;</span>},</span>
+<span id="cb32-47"><a href="#cb32-47" aria-hidden="true" tabindex="-1"></a>            {<span class="st">&quot;name&quot;</span>: <span class="st">&quot;Pendiente en (x, f(x))&quot;</span>, <span class="st">&quot;id&quot;</span>: <span class="st">&quot;derivada&quot;</span>},</span>
+<span id="cb32-48"><a href="#cb32-48" aria-hidden="true" tabindex="-1"></a>            {<span class="st">&quot;name&quot;</span>: <span class="st">&quot;Ordenada de la tangente&quot;</span>, <span class="st">&quot;id&quot;</span>: <span class="st">&quot;ordenada&quot;</span>},</span>
+<span id="cb32-49"><a href="#cb32-49" aria-hidden="true" tabindex="-1"></a>            {<span class="st">&quot;name&quot;</span>: <span class="st">&quot;Raíz de la tangente&quot;</span>, <span class="st">&quot;id&quot;</span>: <span class="st">&quot;x_nuevo&quot;</span>},</span>
+<span id="cb32-50"><a href="#cb32-50" aria-hidden="true" tabindex="-1"></a>        ],</span>
+<span id="cb32-51"><a href="#cb32-51" aria-hidden="true" tabindex="-1"></a>        data<span class="op">=</span>[],</span>
+<span id="cb32-52"><a href="#cb32-52" aria-hidden="true" tabindex="-1"></a>        style_table<span class="op">=</span>{<span class="st">&quot;marginTop&quot;</span>: <span class="st">&quot;20px&quot;</span>},</span>
+<span id="cb32-53"><a href="#cb32-53" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb32-54"><a href="#cb32-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-55"><a href="#cb32-55" aria-hidden="true" tabindex="-1"></a>    dcc.Interval(<span class="bu">id</span><span class="op">=</span><span class="st">&quot;intervalo&quot;</span>, interval<span class="op">=</span><span class="dv">1000</span>, disabled<span class="op">=</span><span class="va">True</span>),</span>
+<span id="cb32-56"><a href="#cb32-56" aria-hidden="true" tabindex="-1"></a>    dcc.Store(<span class="bu">id</span><span class="op">=</span><span class="st">&quot;contador&quot;</span>, data<span class="op">=</span><span class="dv">0</span>),</span>
+<span id="cb32-57"><a href="#cb32-57" aria-hidden="true" tabindex="-1"></a>    dcc.Store(<span class="bu">id</span><span class="op">=</span><span class="st">&quot;x-actual&quot;</span>, data<span class="op">=</span><span class="dv">0</span>),</span>
+<span id="cb32-58"><a href="#cb32-58" aria-hidden="true" tabindex="-1"></a>    dcc.Store(<span class="bu">id</span><span class="op">=</span><span class="st">&quot;grafico-datos&quot;</span>, data<span class="op">=</span>{<span class="st">&quot;tangentes&quot;</span>: [], <span class="st">&quot;puntos&quot;</span>: [], <span class="st">&quot;raices&quot;</span>: []}),</span>
+<span id="cb32-59"><a href="#cb32-59" aria-hidden="true" tabindex="-1"></a>    dcc.Store(<span class="bu">id</span><span class="op">=</span><span class="st">&quot;trazas-tangentes&quot;</span>, data<span class="op">=</span>[]),</span>
+<span id="cb32-60"><a href="#cb32-60" aria-hidden="true" tabindex="-1"></a>    html.Div(<span class="bu">id</span><span class="op">=</span><span class="st">&#39;resultado-final&#39;</span>),</span>
+<span id="cb32-61"><a href="#cb32-61" aria-hidden="true" tabindex="-1"></a>    dcc.Graph(<span class="bu">id</span><span class="op">=</span><span class="st">&#39;grafico-funcion&#39;</span>, style<span class="op">=</span>{<span class="st">&#39;marginTop&#39;</span>: <span class="st">&#39;40px&#39;</span>})</span>
+<span id="cb32-62"><a href="#cb32-62" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb32-63"><a href="#cb32-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-64"><a href="#cb32-64" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(x):</span>
+<span id="cb32-65"><a href="#cb32-65" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a<span class="op">*</span>x<span class="op">**</span><span class="dv">3</span> <span class="op">+</span> b<span class="op">*</span>x<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> c<span class="op">*</span>x <span class="op">+</span> d</span>
+<span id="cb32-66"><a href="#cb32-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-67"><a href="#cb32-67" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> derivada(x):</span>
+<span id="cb32-68"><a href="#cb32-68" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">3</span><span class="op">*</span>a<span class="op">*</span>x<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> <span class="dv">2</span><span class="op">*</span>b<span class="op">*</span>x <span class="op">+</span> c</span>
+<span id="cb32-69"><a href="#cb32-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-70"><a href="#cb32-70" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ordenada(x):</span>
+<span id="cb32-71"><a href="#cb32-71" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> f(x) <span class="op">-</span> derivada(x) <span class="op">*</span> x</span>
+<span id="cb32-72"><a href="#cb32-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-73"><a href="#cb32-73" aria-hidden="true" tabindex="-1"></a><span class="at">@app.callback</span>(</span>
+<span id="cb32-74"><a href="#cb32-74" aria-hidden="true" tabindex="-1"></a>    Output(<span class="st">&quot;funcion-math&quot;</span>, <span class="st">&quot;children&quot;</span>),</span>
+<span id="cb32-75"><a href="#cb32-75" aria-hidden="true" tabindex="-1"></a>    Output(<span class="st">&quot;tabla-newton&quot;</span>, <span class="st">&quot;data&quot;</span>),</span>
+<span id="cb32-76"><a href="#cb32-76" aria-hidden="true" tabindex="-1"></a>    Output(<span class="st">&quot;contador&quot;</span>, <span class="st">&quot;data&quot;</span>),</span>
+<span id="cb32-77"><a href="#cb32-77" aria-hidden="true" tabindex="-1"></a>    Output(<span class="st">&quot;intervalo&quot;</span>, <span class="st">&quot;disabled&quot;</span>),</span>
+<span id="cb32-78"><a href="#cb32-78" aria-hidden="true" tabindex="-1"></a>    Output(<span class="st">&quot;x-actual&quot;</span>, <span class="st">&quot;data&quot;</span>),</span>
+<span id="cb32-79"><a href="#cb32-79" aria-hidden="true" tabindex="-1"></a>    Output(<span class="st">&quot;resultado-final&quot;</span>, <span class="st">&quot;children&quot;</span>),</span>
+<span id="cb32-80"><a href="#cb32-80" aria-hidden="true" tabindex="-1"></a>    Output(<span class="st">&quot;grafico-funcion&quot;</span>, <span class="st">&quot;figure&quot;</span>),</span>
+<span id="cb32-81"><a href="#cb32-81" aria-hidden="true" tabindex="-1"></a>    Output(<span class="st">&quot;grafico-datos&quot;</span>, <span class="st">&quot;data&quot;</span>),</span>
+<span id="cb32-82"><a href="#cb32-82" aria-hidden="true" tabindex="-1"></a>    Output(<span class="st">&quot;trazas-tangentes&quot;</span>, <span class="st">&quot;data&quot;</span>),</span>
+<span id="cb32-83"><a href="#cb32-83" aria-hidden="true" tabindex="-1"></a>    Input(<span class="st">&quot;start-btn&quot;</span>, <span class="st">&quot;n_clicks&quot;</span>),</span>
+<span id="cb32-84"><a href="#cb32-84" aria-hidden="true" tabindex="-1"></a>    Input(<span class="st">&quot;intervalo&quot;</span>, <span class="st">&quot;n_intervals&quot;</span>),</span>
+<span id="cb32-85"><a href="#cb32-85" aria-hidden="true" tabindex="-1"></a>    State(<span class="st">&quot;input-a&quot;</span>, <span class="st">&quot;value&quot;</span>),</span>
+<span id="cb32-86"><a href="#cb32-86" aria-hidden="true" tabindex="-1"></a>    State(<span class="st">&quot;input-b&quot;</span>, <span class="st">&quot;value&quot;</span>),</span>
+<span id="cb32-87"><a href="#cb32-87" aria-hidden="true" tabindex="-1"></a>    State(<span class="st">&quot;input-c&quot;</span>, <span class="st">&quot;value&quot;</span>),</span>
+<span id="cb32-88"><a href="#cb32-88" aria-hidden="true" tabindex="-1"></a>    State(<span class="st">&quot;input-d&quot;</span>, <span class="st">&quot;value&quot;</span>),</span>
+<span id="cb32-89"><a href="#cb32-89" aria-hidden="true" tabindex="-1"></a>    State(<span class="st">&quot;input-n&quot;</span>, <span class="st">&quot;value&quot;</span>),</span>
+<span id="cb32-90"><a href="#cb32-90" aria-hidden="true" tabindex="-1"></a>    State(<span class="st">&quot;input-i&quot;</span>, <span class="st">&quot;value&quot;</span>),</span>
+<span id="cb32-91"><a href="#cb32-91" aria-hidden="true" tabindex="-1"></a>    State(<span class="st">&quot;tabla-newton&quot;</span>, <span class="st">&quot;data&quot;</span>),</span>
+<span id="cb32-92"><a href="#cb32-92" aria-hidden="true" tabindex="-1"></a>    State(<span class="st">&quot;contador&quot;</span>, <span class="st">&quot;data&quot;</span>),</span>
+<span id="cb32-93"><a href="#cb32-93" aria-hidden="true" tabindex="-1"></a>    State(<span class="st">&quot;x-actual&quot;</span>, <span class="st">&quot;data&quot;</span>),</span>
+<span id="cb32-94"><a href="#cb32-94" aria-hidden="true" tabindex="-1"></a>    State(<span class="st">&quot;grafico-datos&quot;</span>, <span class="st">&quot;data&quot;</span>),</span>
+<span id="cb32-95"><a href="#cb32-95" aria-hidden="true" tabindex="-1"></a>    State(<span class="st">&quot;trazas-tangentes&quot;</span>, <span class="st">&quot;data&quot;</span>),</span>
+<span id="cb32-96"><a href="#cb32-96" aria-hidden="true" tabindex="-1"></a>    prevent_initial_call<span class="op">=</span><span class="va">True</span></span>
+<span id="cb32-97"><a href="#cb32-97" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb32-98"><a href="#cb32-98" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> raiz(start_clicks, n_intervals, a_val, b_val, c_val, d_val, n_val, i_val, tabla, contador, x_actual, data_acumulada, trazas):</span>
+<span id="cb32-99"><a href="#cb32-99" aria-hidden="true" tabindex="-1"></a>    <span class="kw">global</span> a, b, c, d, n, i, funcion</span>
+<span id="cb32-100"><a href="#cb32-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-101"><a href="#cb32-101" aria-hidden="true" tabindex="-1"></a>    ctx <span class="op">=</span> dash.callback_context</span>
+<span id="cb32-102"><a href="#cb32-102" aria-hidden="true" tabindex="-1"></a>    trigger_id <span class="op">=</span> ctx.triggered[<span class="dv">0</span>][<span class="st">&#39;prop_id&#39;</span>].split(<span class="st">&#39;.&#39;</span>)[<span class="dv">0</span>] <span class="cf">if</span> ctx.triggered <span class="cf">else</span> <span class="va">None</span></span>
+<span id="cb32-103"><a href="#cb32-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-104"><a href="#cb32-104" aria-hidden="true" tabindex="-1"></a>    colores <span class="op">=</span> [<span class="st">&#39;red&#39;</span>, <span class="st">&#39;green&#39;</span>, <span class="st">&#39;orange&#39;</span>, <span class="st">&#39;purple&#39;</span>, <span class="st">&#39;brown&#39;</span>, <span class="st">&#39;cyan&#39;</span>, <span class="st">&#39;magenta&#39;</span>, <span class="st">&#39;gold&#39;</span>, <span class="st">&#39;black&#39;</span>]</span>
+<span id="cb32-105"><a href="#cb32-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-106"><a href="#cb32-106" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> trigger_id <span class="op">==</span> <span class="st">&quot;start-btn&quot;</span>:</span>
+<span id="cb32-107"><a href="#cb32-107" aria-hidden="true" tabindex="-1"></a>        a <span class="op">=</span> <span class="bu">float</span>(a_val) <span class="cf">if</span> a_val <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="cf">else</span> <span class="dv">0</span></span>
+<span id="cb32-108"><a href="#cb32-108" aria-hidden="true" tabindex="-1"></a>        b <span class="op">=</span> <span class="bu">float</span>(b_val) <span class="cf">if</span> b_val <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="cf">else</span> <span class="dv">0</span></span>
+<span id="cb32-109"><a href="#cb32-109" aria-hidden="true" tabindex="-1"></a>        c <span class="op">=</span> <span class="bu">float</span>(c_val) <span class="cf">if</span> c_val <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="cf">else</span> <span class="dv">0</span></span>
+<span id="cb32-110"><a href="#cb32-110" aria-hidden="true" tabindex="-1"></a>        d <span class="op">=</span> <span class="bu">float</span>(d_val) <span class="cf">if</span> d_val <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="cf">else</span> <span class="dv">0</span></span>
+<span id="cb32-111"><a href="#cb32-111" aria-hidden="true" tabindex="-1"></a>        n <span class="op">=</span> <span class="bu">float</span>(n_val) <span class="cf">if</span> n_val <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="cf">else</span> <span class="dv">0</span></span>
+<span id="cb32-112"><a href="#cb32-112" aria-hidden="true" tabindex="-1"></a>        i <span class="op">=</span> <span class="bu">int</span>(i_val) <span class="cf">if</span> i_val <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="cf">else</span> <span class="dv">0</span></span>
+<span id="cb32-113"><a href="#cb32-113" aria-hidden="true" tabindex="-1"></a>        funcion <span class="op">=</span> <span class="ss">f&quot;</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">x³ </span><span class="sc">{</span>b<span class="sc">:+}</span><span class="ss">x² </span><span class="sc">{</span>c<span class="sc">:+}</span><span class="ss">x </span><span class="sc">{</span>d<span class="sc">:+}</span><span class="ss">&quot;</span>.replace(<span class="st">&quot;+&quot;</span>, <span class="st">&quot; + &quot;</span>).replace(<span class="st">&quot;-&quot;</span>, <span class="st">&quot; - &quot;</span>)</span>
+<span id="cb32-114"><a href="#cb32-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-115"><a href="#cb32-115" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> [</span>
+<span id="cb32-116"><a href="#cb32-116" aria-hidden="true" tabindex="-1"></a>            html.Div([<span class="ss">f&quot;f(x) = </span><span class="sc">{</span>funcion<span class="sc">}</span><span class="ss">&quot;</span>], style<span class="op">=</span>{<span class="st">&#39;fontWeight&#39;</span>: <span class="st">&#39;bold&#39;</span>}),</span>
+<span id="cb32-117"><a href="#cb32-117" aria-hidden="true" tabindex="-1"></a>            [],</span>
+<span id="cb32-118"><a href="#cb32-118" aria-hidden="true" tabindex="-1"></a>            <span class="dv">0</span>,</span>
+<span id="cb32-119"><a href="#cb32-119" aria-hidden="true" tabindex="-1"></a>            <span class="va">False</span>,</span>
+<span id="cb32-120"><a href="#cb32-120" aria-hidden="true" tabindex="-1"></a>            n,</span>
+<span id="cb32-121"><a href="#cb32-121" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;&quot;</span>,</span>
+<span id="cb32-122"><a href="#cb32-122" aria-hidden="true" tabindex="-1"></a>            go.Figure(),</span>
+<span id="cb32-123"><a href="#cb32-123" aria-hidden="true" tabindex="-1"></a>            {<span class="st">&quot;tangentes&quot;</span>: [], <span class="st">&quot;puntos&quot;</span>: [], <span class="st">&quot;raices&quot;</span>: []},</span>
+<span id="cb32-124"><a href="#cb32-124" aria-hidden="true" tabindex="-1"></a>            []</span>
+<span id="cb32-125"><a href="#cb32-125" aria-hidden="true" tabindex="-1"></a>        ]</span>
+<span id="cb32-126"><a href="#cb32-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-127"><a href="#cb32-127" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> trigger_id <span class="op">==</span> <span class="st">&quot;intervalo&quot;</span>:</span>
+<span id="cb32-128"><a href="#cb32-128" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> contador <span class="op">&gt;=</span> i:</span>
+<span id="cb32-129"><a href="#cb32-129" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> [</span>
+<span id="cb32-130"><a href="#cb32-130" aria-hidden="true" tabindex="-1"></a>                dash.no_update,</span>
+<span id="cb32-131"><a href="#cb32-131" aria-hidden="true" tabindex="-1"></a>                dash.no_update,</span>
+<span id="cb32-132"><a href="#cb32-132" aria-hidden="true" tabindex="-1"></a>                dash.no_update,</span>
+<span id="cb32-133"><a href="#cb32-133" aria-hidden="true" tabindex="-1"></a>                <span class="va">True</span>,</span>
+<span id="cb32-134"><a href="#cb32-134" aria-hidden="true" tabindex="-1"></a>                dash.no_update,</span>
+<span id="cb32-135"><a href="#cb32-135" aria-hidden="true" tabindex="-1"></a>                <span class="ss">f&quot;Raíz aproximada: </span><span class="sc">{</span>x_actual<span class="sc">}</span><span class="ss"> (iteraciones: </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">)&quot;</span>,</span>
+<span id="cb32-136"><a href="#cb32-136" aria-hidden="true" tabindex="-1"></a>                dash.no_update,</span>
+<span id="cb32-137"><a href="#cb32-137" aria-hidden="true" tabindex="-1"></a>                data_acumulada,</span>
+<span id="cb32-138"><a href="#cb32-138" aria-hidden="true" tabindex="-1"></a>                trazas</span>
+<span id="cb32-139"><a href="#cb32-139" aria-hidden="true" tabindex="-1"></a>            ]</span>
+<span id="cb32-140"><a href="#cb32-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-141"><a href="#cb32-141" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> <span class="bu">float</span>(x_actual)</span>
+<span id="cb32-142"><a href="#cb32-142" aria-hidden="true" tabindex="-1"></a>        fx <span class="op">=</span> f(x)</span>
+<span id="cb32-143"><a href="#cb32-143" aria-hidden="true" tabindex="-1"></a>        dx <span class="op">=</span> derivada(x)</span>
+<span id="cb32-144"><a href="#cb32-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-145"><a href="#cb32-145" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> dx <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb32-146"><a href="#cb32-146" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> [</span>
+<span id="cb32-147"><a href="#cb32-147" aria-hidden="true" tabindex="-1"></a>                dash.no_update,</span>
+<span id="cb32-148"><a href="#cb32-148" aria-hidden="true" tabindex="-1"></a>                dash.no_update,</span>
+<span id="cb32-149"><a href="#cb32-149" aria-hidden="true" tabindex="-1"></a>                dash.no_update,</span>
+<span id="cb32-150"><a href="#cb32-150" aria-hidden="true" tabindex="-1"></a>                <span class="va">True</span>,</span>
+<span id="cb32-151"><a href="#cb32-151" aria-hidden="true" tabindex="-1"></a>                dash.no_update,</span>
+<span id="cb32-152"><a href="#cb32-152" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;Error: Derivada cero&quot;</span>,</span>
+<span id="cb32-153"><a href="#cb32-153" aria-hidden="true" tabindex="-1"></a>                dash.no_update,</span>
+<span id="cb32-154"><a href="#cb32-154" aria-hidden="true" tabindex="-1"></a>                data_acumulada,</span>
+<span id="cb32-155"><a href="#cb32-155" aria-hidden="true" tabindex="-1"></a>                trazas</span>
+<span id="cb32-156"><a href="#cb32-156" aria-hidden="true" tabindex="-1"></a>            ]</span>
+<span id="cb32-157"><a href="#cb32-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-158"><a href="#cb32-158" aria-hidden="true" tabindex="-1"></a>        x_nuevo <span class="op">=</span> <span class="op">-</span>ordenada(x) <span class="op">/</span> derivada(x)</span>
+<span id="cb32-159"><a href="#cb32-159" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Dominio para graficar f(x)</span></span>
+<span id="cb32-160"><a href="#cb32-160" aria-hidden="true" tabindex="-1"></a>        x_vals <span class="op">=</span> np.linspace(x <span class="op">-</span> <span class="dv">5</span>, x <span class="op">+</span> <span class="dv">5</span>, <span class="dv">400</span>)</span>
+<span id="cb32-161"><a href="#cb32-161" aria-hidden="true" tabindex="-1"></a>        y_vals <span class="op">=</span> [f(xi) <span class="cf">for</span> xi <span class="kw">in</span> x_vals]</span>
+<span id="cb32-162"><a href="#cb32-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-163"><a href="#cb32-163" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Tangente en x</span></span>
+<span id="cb32-164"><a href="#cb32-164" aria-hidden="true" tabindex="-1"></a>        tangente_vals <span class="op">=</span> [derivada(x) <span class="op">*</span> (xi <span class="op">-</span> x) <span class="op">+</span> fx <span class="cf">for</span> xi <span class="kw">in</span> x_vals]</span>
+<span id="cb32-165"><a href="#cb32-165" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Guardar las curvas</span></span>
+<span id="cb32-166"><a href="#cb32-166" aria-hidden="true" tabindex="-1"></a>        nuevas_tangentes <span class="op">=</span> data_acumulada[<span class="st">&quot;tangentes&quot;</span>] <span class="op">+</span> [ [x_vals.tolist(), tangente_vals] ]</span>
+<span id="cb32-167"><a href="#cb32-167" aria-hidden="true" tabindex="-1"></a>        nuevos_puntos <span class="op">=</span> data_acumulada[<span class="st">&quot;puntos&quot;</span>] <span class="op">+</span> [ [x, fx] ]</span>
+<span id="cb32-168"><a href="#cb32-168" aria-hidden="true" tabindex="-1"></a>        nuevas_raices <span class="op">=</span> data_acumulada[<span class="st">&quot;raices&quot;</span>] <span class="op">+</span> [ [x_nuevo, <span class="dv">0</span>] ]</span>
+<span id="cb32-169"><a href="#cb32-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-170"><a href="#cb32-170" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Agregar nueva traza coloreada</span></span>
+<span id="cb32-171"><a href="#cb32-171" aria-hidden="true" tabindex="-1"></a>        color <span class="op">=</span> colores[contador <span class="op">%</span> <span class="bu">len</span>(colores)]</span>
+<span id="cb32-172"><a href="#cb32-172" aria-hidden="true" tabindex="-1"></a>        nueva_traza <span class="op">=</span> go.Scatter(</span>
+<span id="cb32-173"><a href="#cb32-173" aria-hidden="true" tabindex="-1"></a>            x<span class="op">=</span>x_vals,</span>
+<span id="cb32-174"><a href="#cb32-174" aria-hidden="true" tabindex="-1"></a>            y<span class="op">=</span>tangente_vals,</span>
+<span id="cb32-175"><a href="#cb32-175" aria-hidden="true" tabindex="-1"></a>            mode<span class="op">=</span><span class="st">&#39;lines&#39;</span>,</span>
+<span id="cb32-176"><a href="#cb32-176" aria-hidden="true" tabindex="-1"></a>            name<span class="op">=</span><span class="ss">f&#39;Tangente </span><span class="sc">{</span>contador <span class="op">+</span> <span class="dv">1</span><span class="sc">}</span><span class="ss">&#39;</span>,</span>
+<span id="cb32-177"><a href="#cb32-177" aria-hidden="true" tabindex="-1"></a>            line<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span>color, dash<span class="op">=</span><span class="st">&#39;dot&#39;</span>)</span>
+<span id="cb32-178"><a href="#cb32-178" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb32-179"><a href="#cb32-179" aria-hidden="true" tabindex="-1"></a>        nuevas_trazas <span class="op">=</span> trazas <span class="op">+</span> [nueva_traza]</span>
+<span id="cb32-180"><a href="#cb32-180" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-181"><a href="#cb32-181" aria-hidden="true" tabindex="-1"></a>        fig <span class="op">=</span> go.Figure()</span>
+<span id="cb32-182"><a href="#cb32-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-183"><a href="#cb32-183" aria-hidden="true" tabindex="-1"></a>        fig.add_trace(go.Scatter(x<span class="op">=</span>x_vals, y<span class="op">=</span>y_vals, mode<span class="op">=</span><span class="st">&#39;lines&#39;</span>, name<span class="op">=</span><span class="st">&#39;f(x)&#39;</span>, line<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span><span class="st">&#39;blue&#39;</span>)))</span>
+<span id="cb32-184"><a href="#cb32-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-185"><a href="#cb32-185" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> traza <span class="kw">in</span> nuevas_trazas:</span>
+<span id="cb32-186"><a href="#cb32-186" aria-hidden="true" tabindex="-1"></a>            fig.add_trace(traza)</span>
+<span id="cb32-187"><a href="#cb32-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-188"><a href="#cb32-188" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> p <span class="kw">in</span> nuevos_puntos:</span>
+<span id="cb32-189"><a href="#cb32-189" aria-hidden="true" tabindex="-1"></a>            fig.add_trace(go.Scatter(x<span class="op">=</span>[p[<span class="dv">0</span>]], y<span class="op">=</span>[p[<span class="dv">1</span>]], mode<span class="op">=</span><span class="st">&#39;markers&#39;</span>, marker<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span><span class="st">&#39;red&#39;</span>, size<span class="op">=</span><span class="dv">6</span>), name<span class="op">=</span><span class="st">&#39;xₙ&#39;</span>))</span>
+<span id="cb32-190"><a href="#cb32-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-191"><a href="#cb32-191" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> r <span class="kw">in</span> nuevas_raices:</span>
+<span id="cb32-192"><a href="#cb32-192" aria-hidden="true" tabindex="-1"></a>            fig.add_trace(go.Scatter(x<span class="op">=</span>[r[<span class="dv">0</span>]], y<span class="op">=</span>[<span class="dv">0</span>], mode<span class="op">=</span><span class="st">&#39;markers&#39;</span>, marker<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span><span class="st">&#39;green&#39;</span>, size<span class="op">=</span><span class="dv">8</span>, symbol<span class="op">=</span><span class="st">&#39;x&#39;</span>), name<span class="op">=</span><span class="st">&#39;Raíz tangente&#39;</span>))</span>
+<span id="cb32-193"><a href="#cb32-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-194"><a href="#cb32-194" aria-hidden="true" tabindex="-1"></a>        x_combinado <span class="op">=</span> <span class="bu">list</span>(x_vals)</span>
+<span id="cb32-195"><a href="#cb32-195" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> p <span class="kw">in</span> nuevos_puntos:</span>
+<span id="cb32-196"><a href="#cb32-196" aria-hidden="true" tabindex="-1"></a>            x_combinado.append(p[<span class="dv">0</span>])</span>
+<span id="cb32-197"><a href="#cb32-197" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> r <span class="kw">in</span> nuevas_raices:</span>
+<span id="cb32-198"><a href="#cb32-198" aria-hidden="true" tabindex="-1"></a>            x_combinado.append(r[<span class="dv">0</span>])</span>
+<span id="cb32-199"><a href="#cb32-199" aria-hidden="true" tabindex="-1"></a>        x_min <span class="op">=</span> <span class="bu">min</span>(x_combinado)</span>
+<span id="cb32-200"><a href="#cb32-200" aria-hidden="true" tabindex="-1"></a>        x_max <span class="op">=</span> <span class="bu">max</span>(x_combinado)</span>
+<span id="cb32-201"><a href="#cb32-201" aria-hidden="true" tabindex="-1"></a>        x_margin <span class="op">=</span> (x_max <span class="op">-</span> x_min) <span class="op">*</span> <span class="fl">0.1</span> <span class="cf">if</span> x_max <span class="op">!=</span> x_min <span class="cf">else</span> <span class="dv">1</span></span>
+<span id="cb32-202"><a href="#cb32-202" aria-hidden="true" tabindex="-1"></a>        y_combinado <span class="op">=</span> y_vals <span class="op">+</span> tangente_vals</span>
+<span id="cb32-203"><a href="#cb32-203" aria-hidden="true" tabindex="-1"></a>        y_min <span class="op">=</span> <span class="bu">min</span>(y_combinado)</span>
+<span id="cb32-204"><a href="#cb32-204" aria-hidden="true" tabindex="-1"></a>        y_max <span class="op">=</span> <span class="bu">max</span>(y_combinado)</span>
+<span id="cb32-205"><a href="#cb32-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-206"><a href="#cb32-206" aria-hidden="true" tabindex="-1"></a>        y_margin <span class="op">=</span> (y_max <span class="op">-</span> y_min) <span class="op">*</span> <span class="fl">0.1</span></span>
+<span id="cb32-207"><a href="#cb32-207" aria-hidden="true" tabindex="-1"></a>        y_min <span class="op">-=</span> y_margin</span>
+<span id="cb32-208"><a href="#cb32-208" aria-hidden="true" tabindex="-1"></a>        y_max <span class="op">+=</span> y_margin</span>
+<span id="cb32-209"><a href="#cb32-209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-210"><a href="#cb32-210" aria-hidden="true" tabindex="-1"></a>        fig.update_layout(title<span class="op">=</span><span class="st">&quot;Método de Newton-Raphson&quot;</span>, xaxis_title<span class="op">=</span><span class="st">&quot;x&quot;</span>, yaxis_title<span class="op">=</span><span class="st">&quot;f(x)&quot;</span>, height<span class="op">=</span><span class="dv">500</span>, xaxis<span class="op">=</span><span class="bu">dict</span>(<span class="bu">range</span><span class="op">=</span>[x_min <span class="op">-</span> x_margin, x_max <span class="op">+</span> x_margin]), yaxis<span class="op">=</span><span class="bu">dict</span>(<span class="bu">range</span><span class="op">=</span>[y_min, y_max]))</span>
+<span id="cb32-211"><a href="#cb32-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-212"><a href="#cb32-212" aria-hidden="true" tabindex="-1"></a>        nueva_fila <span class="op">=</span> {</span>
+<span id="cb32-213"><a href="#cb32-213" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;iterador&quot;</span>: contador <span class="op">+</span> <span class="dv">1</span>,</span>
+<span id="cb32-214"><a href="#cb32-214" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;x&quot;</span>: <span class="ss">f&quot;</span><span class="sc">{</span>x<span class="sc">}</span><span class="ss">&quot;</span>,</span>
+<span id="cb32-215"><a href="#cb32-215" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;fx&quot;</span>: <span class="ss">f&quot;</span><span class="sc">{</span>fx<span class="sc">}</span><span class="ss">&quot;</span>,</span>
+<span id="cb32-216"><a href="#cb32-216" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;derivada&quot;</span>: <span class="ss">f&quot;</span><span class="sc">{</span>dx<span class="sc">}</span><span class="ss">&quot;</span>,</span>
+<span id="cb32-217"><a href="#cb32-217" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;ordenada&quot;</span>: <span class="ss">f&quot;</span><span class="sc">{</span>ordenada(x)<span class="sc">}</span><span class="ss">&quot;</span>,</span>
+<span id="cb32-218"><a href="#cb32-218" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;x_nuevo&quot;</span>: <span class="ss">f&quot;</span><span class="sc">{</span>x_nuevo<span class="sc">}</span><span class="ss">&quot;</span></span>
+<span id="cb32-219"><a href="#cb32-219" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb32-220"><a href="#cb32-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-221"><a href="#cb32-221" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> [</span>
+<span id="cb32-222"><a href="#cb32-222" aria-hidden="true" tabindex="-1"></a>            dash.no_update,</span>
+<span id="cb32-223"><a href="#cb32-223" aria-hidden="true" tabindex="-1"></a>            tabla <span class="op">+</span> [nueva_fila],</span>
+<span id="cb32-224"><a href="#cb32-224" aria-hidden="true" tabindex="-1"></a>            contador <span class="op">+</span> <span class="dv">1</span>,</span>
+<span id="cb32-225"><a href="#cb32-225" aria-hidden="true" tabindex="-1"></a>            <span class="va">False</span>,</span>
+<span id="cb32-226"><a href="#cb32-226" aria-hidden="true" tabindex="-1"></a>            x_nuevo,</span>
+<span id="cb32-227"><a href="#cb32-227" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;&quot;</span>,</span>
+<span id="cb32-228"><a href="#cb32-228" aria-hidden="true" tabindex="-1"></a>            fig,</span>
+<span id="cb32-229"><a href="#cb32-229" aria-hidden="true" tabindex="-1"></a>            {</span>
+<span id="cb32-230"><a href="#cb32-230" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;tangentes&quot;</span>: nuevas_tangentes,</span>
+<span id="cb32-231"><a href="#cb32-231" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;puntos&quot;</span>: nuevos_puntos,</span>
+<span id="cb32-232"><a href="#cb32-232" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;raices&quot;</span>: nuevas_raices</span>
+<span id="cb32-233"><a href="#cb32-233" aria-hidden="true" tabindex="-1"></a>            },</span>
+<span id="cb32-234"><a href="#cb32-234" aria-hidden="true" tabindex="-1"></a>            nuevas_trazas</span>
+<span id="cb32-235"><a href="#cb32-235" aria-hidden="true" tabindex="-1"></a>        ]</span>
+<span id="cb32-236"><a href="#cb32-236" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-237"><a href="#cb32-237" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> dash.no_update</span>
+<span id="cb32-238"><a href="#cb32-238" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-239"><a href="#cb32-239" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>:</span>
+<span id="cb32-240"><a href="#cb32-240" aria-hidden="true" tabindex="-1"></a>    app.run(port<span class="op">=</span><span class="st">&quot;8086&quot;</span>,debug<span class="op">=</span><span class="va">False</span>)</span></code></pre></div>
+<div class="output display_data">
+
+        <iframe
+            width="100%"
+            height="650"
+            src="http://127.0.0.1:8086/"
+            frameborder="0"
+            allowfullscreen
+            
+        ></iframe>
+        
+</div>
+</div>
+<div class="cell markdown" id="8Epwvo-0egd2">
+<p><br></p>
+</div>
+<section id="mrmrs-gpt" class="cell markdown" id="w5eWarEVJW_I">
+<h1>Mr/Mrs. GPT</h1>
+<hr />
+</section>
+<div class="cell code" data-execution_count="18"
+data-colab="{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}"
+id="8JgPptG2JWYB" data-outputId="990324b0-5290-4b1a-a9a8-3a62c7836920">
+<div class="sourceCode" id="cb33"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Paso 1: Pedir coeficientes</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">&quot;Coeficiente cúbico (a): &quot;</span>))</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">&quot;Coeficiente cuadrático (b): &quot;</span>))</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">&quot;Coeficiente lineal (c): &quot;</span>))</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">&quot;Término independiente (d): &quot;</span>))</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Paso 2: Definir función y derivada</span></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(x):</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a<span class="op">*</span>x<span class="op">**</span><span class="dv">3</span> <span class="op">+</span> b<span class="op">*</span>x<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> c<span class="op">*</span>x <span class="op">+</span> d</span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f_prime(x):</span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">3</span><span class="op">*</span>a<span class="op">*</span>x<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> <span class="dv">2</span><span class="op">*</span>b<span class="op">*</span>x <span class="op">+</span> c</span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Paso 3: Valores iniciales</span></span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>x0 <span class="op">=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">&quot;Valor inicial x₀: &quot;</span>))</span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>tolerancia <span class="op">=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">&quot;Tolerancia (ej. 0.0001): &quot;</span>))</span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>max_iter <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>(<span class="st">&quot;Máximo número de iteraciones: &quot;</span>))</span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Paso 4: Iteración de Newton-Raphson</span></span>
+<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a>valores <span class="op">=</span> []  <span class="co"># Para tabla</span></span>
+<span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(max_iter):</span>
+<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a>    fx <span class="op">=</span> f(x0)</span>
+<span id="cb33-23"><a href="#cb33-23" aria-hidden="true" tabindex="-1"></a>    fpx <span class="op">=</span> f_prime(x0)</span>
+<span id="cb33-24"><a href="#cb33-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> fpx <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb33-25"><a href="#cb33-25" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">&quot;Derivada cero. No se puede continuar.&quot;</span>)</span>
+<span id="cb33-26"><a href="#cb33-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span>
+<span id="cb33-27"><a href="#cb33-27" aria-hidden="true" tabindex="-1"></a>    x1 <span class="op">=</span> x0 <span class="op">-</span> fx <span class="op">/</span> fpx</span>
+<span id="cb33-28"><a href="#cb33-28" aria-hidden="true" tabindex="-1"></a>    valores.append((i<span class="op">+</span><span class="dv">1</span>, x0, fx, fpx, x1))</span>
+<span id="cb33-29"><a href="#cb33-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">abs</span>(x1 <span class="op">-</span> x0) <span class="op">&lt;</span> tolerancia:</span>
+<span id="cb33-30"><a href="#cb33-30" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span>
+<span id="cb33-31"><a href="#cb33-31" aria-hidden="true" tabindex="-1"></a>    x0 <span class="op">=</span> x1</span>
+<span id="cb33-32"><a href="#cb33-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-33"><a href="#cb33-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Resultado final</span></span>
+<span id="cb33-34"><a href="#cb33-34" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;</span><span class="ch">\n</span><span class="ss">Raíz aproximada: </span><span class="sc">{</span>x1<span class="sc">:.6f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb33-35"><a href="#cb33-35" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">Tabla de iteraciones:&quot;</span>)</span>
+<span id="cb33-36"><a href="#cb33-36" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Iter |    x      |   f(x)    |  f&#39;(x)   |   Próximo x&quot;</span>)</span>
+<span id="cb33-37"><a href="#cb33-37" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> v <span class="kw">in</span> valores:</span>
+<span id="cb33-38"><a href="#cb33-38" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{</span>v[<span class="dv">0</span>]<span class="sc">:4}</span><span class="ss"> | </span><span class="sc">{</span>v[<span class="dv">1</span>]<span class="sc">:9.5f}</span><span class="ss"> | </span><span class="sc">{</span>v[<span class="dv">2</span>]<span class="sc">:9.5f}</span><span class="ss"> | </span><span class="sc">{</span>v[<span class="dv">3</span>]<span class="sc">:9.5f}</span><span class="ss"> | </span><span class="sc">{</span>v[<span class="dv">4</span>]<span class="sc">:9.5f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb33-39"><a href="#cb33-39" aria-hidden="true" tabindex="-1"></a></span></code></pre></div>
+<div class="output stream stdin">
+<pre><code>Coeficiente cúbico (a):  2
+Coeficiente cuadrático (b):  -2
+Coeficiente lineal (c):  3
+Término independiente (d):  -2
+Valor inicial x₀:  1
+Tolerancia (ej. 0.0001):  0.1
+Máximo número de iteraciones:  9
+</code></pre>
+</div>
+<div class="output stream stdout">
+<pre><code>
+Raíz aproximada: 0.760440
+
+Tabla de iteraciones:
+Iter |    x      |   f(x)    |  f&#39;(x)   |   Próximo x
+   1 |   1.00000 |   1.00000 |   5.00000 |   0.80000
+   2 |   0.80000 |   0.14400 |   3.64000 |   0.76044
+</code></pre>
+</div>
+</div>
+<div class="cell code">
+<div class="sourceCode" id="cb36"><pre
+class="sourceCode python"><code class="sourceCode python"></code></pre></div>
+</div>
+<script src="js/script.js"></script>
+<footer class="nav-footer">
+<a class="nav-btn" href="/amipyclub/">Home</a>
+<a class="nav-btn" href="2_Objetivo Suma_de_Riemann.html">Next ➡</a>
+</footer>
+</body>
+</html>

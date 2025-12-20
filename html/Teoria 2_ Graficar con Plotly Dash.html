@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Teoria 2_ Graficar con Plotly Dash</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+<link rel="icon" href="../logo.webp" type="image/webp">
+    <link rel="shortcut icon" href="../logo.webp">
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<div id="ab085e95-2ed4-4dda-8c15-d6c5705c27e1" class="cell markdown">
+<h1 id="graficar-con-plotly-dash">Graficar con Plotly Dash</h1>
+</div>
+<div id="f88faaec-b811-4011-b612-b8e30a52d653" class="cell markdown"
+data-colab_type="text" id="view-in-github">
+<p><a href="https://colab.research.google.com/github/amipy25/amipyclub/blob/main/notebooks/Teoria%202_%20Graficar%20con%20Plotly%20Dash.ipynb" 
+    target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+<p>Para ver todas las ejecuciones, usar Google Colab</p></p>
+</div>
+<div id="f01b83be-98f6-42da-b685-ac5502894260" class="cell markdown">
+<h1 id="suma-inferior-base">Suma Inferior base</h1>
+<hr />
+</div>
+<div id="95c617a5-9380-41ec-af36-17dbb4082069" class="cell code"
+data-execution_count="2">
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>entradas <span class="op">=</span> {</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;sen&quot;</span>: <span class="st">&quot;math.sin&quot;</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;sin&quot;</span>: <span class="st">&quot;math.sin&quot;</span>,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;cos&quot;</span>: <span class="st">&quot;math.cos&quot;</span>,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;tan&quot;</span>: <span class="st">&quot;math.tan&quot;</span>,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;e^&quot;</span>: <span class="st">&quot;math.exp&quot;</span>,</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;ln&quot;</span>: <span class="st">&quot;math.log&quot;</span>,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;log&quot;</span>: <span class="st">&quot;math.log10&quot;</span>,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;x^&quot;</span>: <span class="st">&quot;x**&quot;</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sanitizar(sintaxis):</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> clave, valor <span class="kw">in</span> entradas.items():</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        sintaxis <span class="op">=</span> sintaxis.replace(clave, valor)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> sintaxis</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sumaInferior(funcion, desde, hasta, rectangulos):</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> rectangulos <span class="op">&lt;=</span> <span class="dv">0</span>:</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">&quot;En la primaria no te enseñaron que no podes dividir algo por cero?&quot;</span>)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> hasta <span class="op">&lt;=</span> desde:</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">&quot;Estas en tu casa y para ir a la Uni, vas desde la Uni a tu Casa?&quot;</span>)</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> desde</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span> hasta</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> rectangulos</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    delta <span class="op">=</span> (b <span class="op">-</span> a) <span class="op">/</span> n</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    sumatoria <span class="op">=</span> <span class="fl">0.0</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>        izq <span class="op">=</span> a <span class="op">+</span> k <span class="op">*</span> delta</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>        der <span class="op">=</span> izq <span class="op">+</span> delta</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>        m_k <span class="op">=</span> <span class="bu">min</span>(funcion(izq), funcion(der))</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>        sumatoria <span class="op">+=</span> m_k <span class="op">*</span> delta</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> sumatoria</span></code></pre></div>
+</div>
+<div id="0f3b49bd-f8fe-454e-a2b9-1efdc3a803bb" class="cell markdown">
+<p><br></p>
+</div>
+<div id="df751dea-ad60-4475-8a93-1bf1e0f13558" class="cell markdown">
+<h1 id="ejecución">Ejecución</h1>
+<hr />
+</div>
+<div id="ba2929ba-5470-4857-b331-0b1a2a92ee8e" class="cell code"
+data-execution_count="3">
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(x):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>sumaInferior(f, <span class="dv">0</span>, <span class="dv">2</span>,<span class="dv">10</span>)</span></code></pre></div>
+<div class="output execute_result" data-execution_count="3">
+<pre><code>2.2800000000000007</code></pre>
+</div>
+</div>
+<div id="e39faf8b-b3f0-4cf0-940d-7ff26816d86b" class="cell markdown">
+<p><br></p>
+</div>
+<div id="8667ca31-94b9-403f-b94c-05772b77e56c" class="cell markdown">
+<h1 id="grafica">Grafica</h1>
+<hr />
+</div>
+<div id="6fa02c94-6303-4343-b696-42c367be0fab" class="cell code"
+data-execution_count="4" data-scrolled="true">
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dash</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dash <span class="im">import</span> html, dcc</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dash_bootstrap_components <span class="im">as</span> dbc</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> dash.Dash(<span class="va">__name__</span>, external_stylesheets<span class="op">=</span>[dbc.themes.BOOTSTRAP]) <span class="co"># Creación de la Dash app con estilo bootstrap</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>grafico <span class="op">=</span> dcc.Graph(<span class="bu">id</span> <span class="op">=</span> <span class="st">&quot;grafico_plantilla&quot;</span>, figure<span class="op">=</span>{}) <span class="co"># grafico vacio</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>app.layout <span class="op">=</span> html.Div([grafico]) <span class="co"># La web dash app con su contenido un grafico</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>:</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    app.run( port<span class="op">=</span><span class="st">&quot;8070&quot;</span>,debug<span class="op">=</span><span class="va">False</span>) <span class="co"># Levantar web server para ejecutar la app</span></span></code></pre></div>
+<div class="output display_data">
+
+        <iframe
+            width="100%"
+            height="650"
+            src="http://127.0.0.1:8070/"
+            frameborder="0"
+            allowfullscreen
+            
+        ></iframe>
+        
+</div>
+</div>
+<div id="f887c099-ed50-41f9-b527-3a8cf1c07044" class="cell markdown">
+<p><br></p>
+</div>
+<div id="309b21d1-491a-4924-8f98-701f0f4b8526" class="cell markdown">
+<h1 id="agregar-datos-para-graficar">Agregar datos para graficar</h1>
+<hr />
+</div>
+<div id="ad3bb332-d07b-4c9e-ad9a-517065eb2ea0" class="cell code"
+data-execution_count="5">
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dash</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dash <span class="im">import</span> html, dcc</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dash_bootstrap_components <span class="im">as</span> dbc</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>val_x <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>] <span class="co"># Lista conteniendo valores de x</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>val_y <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">9</span>] <span class="co"># Lista conteniendo valores de y</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>trazo <span class="op">=</span> go.Figure() <span class="co"># Creamos un objeto gráfico llamado trazo para guardar los datos y estilos del gráfico</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>trazo.add_trace(go.Scatter(x<span class="op">=</span>val_x, y<span class="op">=</span>val_y, mode<span class="op">=</span><span class="st">&quot;lines+markers&quot;</span>, name<span class="op">=</span><span class="st">&quot;Ejemplo&quot;</span>)) <span class="co"># Agregamos los x e y unidos por lineas y le asignamos un nombre</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> dash.Dash(<span class="va">__name__</span>, external_stylesheets<span class="op">=</span>[dbc.themes.BOOTSTRAP]) <span class="co"># Creación de la Dash app con estilo bootstrap</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>grafico <span class="op">=</span> dcc.Graph(<span class="bu">id</span> <span class="op">=</span> <span class="st">&quot;grafico_plantilla&quot;</span>, figure<span class="op">=</span>trazo) <span class="co"># grafico pasando figura</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>app.layout <span class="op">=</span> html.Div([grafico]) <span class="co"># La web dash app con su contenido un grafico</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>:</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    app.run(port<span class="op">=</span><span class="st">&quot;8071&quot;</span>, debug<span class="op">=</span><span class="va">False</span>) <span class="co"># Levantar web server para ejecutar la app</span></span></code></pre></div>
+<div class="output display_data">
+
+        <iframe
+            width="100%"
+            height="650"
+            src="http://127.0.0.1:8071/"
+            frameborder="0"
+            allowfullscreen
+            
+        ></iframe>
+        
+</div>
+</div>
+<div id="6ae9a5c9-3282-4bd1-9851-1db2331af681" class="cell markdown">
+<p><br></p>
+</div>
+<div id="5eaa4224-c114-4640-ac58-26a6b58c1925" class="cell markdown">
+<h1 id="datos-a-partir-de-función-matemática">Datos a partir de función
+matemática</h1>
+<hr />
+</div>
+<div id="af7f6fcd-2932-4e7d-a393-841f993ff0e0" class="cell code"
+data-execution_count="6">
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dash</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dash <span class="im">import</span> html, dcc</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dash_bootstrap_components <span class="im">as</span> dbc</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(x):</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x<span class="op">**</span><span class="dv">2</span> <span class="co"># Ponemos una función en formato que Python entienda</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>val_x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">50</span>) <span class="co"># Entre x=0 y x=3 hacemos 50 subdivisiones</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>val_y <span class="op">=</span> f(val_x) <span class="co"># Evaluamos los x</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>trazo <span class="op">=</span> go.Figure() <span class="co"># Creamos un objeto gráfico llamado trazo para guardar los datos y estilos del gráfico</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>trazo.add_trace(go.Scatter(x<span class="op">=</span>val_x, y<span class="op">=</span>val_y, mode<span class="op">=</span><span class="st">&quot;lines+markers&quot;</span>, name<span class="op">=</span><span class="st">&quot;f(x) = x^2&quot;</span>)) <span class="co"># Agregamos los x e y unidos por lineas y le asignamos un nombre</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> dash.Dash(<span class="va">__name__</span>, external_stylesheets<span class="op">=</span>[dbc.themes.BOOTSTRAP]) <span class="co"># Creación de la Dash app con estilo bootstrap</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>grafico <span class="op">=</span> dcc.Graph(<span class="bu">id</span> <span class="op">=</span> <span class="st">&quot;grafico_plantilla&quot;</span>, figure<span class="op">=</span>trazo) <span class="co"># grafico pasando figura</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>app.layout <span class="op">=</span> html.Div([grafico]) <span class="co"># La web dash app con su contenido un grafico</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>:</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>    app.run(port<span class="op">=</span><span class="st">&quot;8072&quot;</span>, debug<span class="op">=</span><span class="va">False</span>) <span class="co"># Levantar web server para ejecutar la app</span></span></code></pre></div>
+<div class="output display_data">
+
+        <iframe
+            width="100%"
+            height="650"
+            src="http://127.0.0.1:8072/"
+            frameborder="0"
+            allowfullscreen
+            
+        ></iframe>
+        
+</div>
+</div>
+<div id="a9d27491-bd31-4c70-8fa7-d419b6d15ccf" class="cell markdown">
+<p><br></p>
+</div>
+<div id="31e20284-d938-4602-8c32-9d5bdba38f14" class="cell markdown">
+<h1 id="datos-de-la-función-sumainferior">Datos de la función
+sumaInferior</h1>
+<hr />
+</div>
+<div id="7d93a8b6-1eed-47f2-9da9-a7a74870ea2d" class="cell code"
+data-execution_count="7">
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>entradas <span class="op">=</span> {</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;sen&quot;</span>: <span class="st">&quot;math.sin&quot;</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;sin&quot;</span>: <span class="st">&quot;math.sin&quot;</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;cos&quot;</span>: <span class="st">&quot;math.cos&quot;</span>,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;tan&quot;</span>: <span class="st">&quot;math.tan&quot;</span>,</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;e^&quot;</span>: <span class="st">&quot;math.exp&quot;</span>,</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;ln&quot;</span>: <span class="st">&quot;math.log&quot;</span>,</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;log&quot;</span>: <span class="st">&quot;math.log10&quot;</span>,</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;x^&quot;</span>: <span class="st">&quot;x**&quot;</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sanitizar(sintaxis):</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> clave, valor <span class="kw">in</span> entradas.items():</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>        sintaxis <span class="op">=</span> sintaxis.replace(clave, valor)</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> sintaxis</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sumaInferior(funcion, desde, hasta, rectangulos):</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> rectangulos <span class="op">&lt;=</span> <span class="dv">0</span>:</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">&quot;En la primaria no te enseñaron que no podes dividir algo por cero?&quot;</span>)</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> hasta <span class="op">&lt;=</span> desde:</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">&quot;Estas en tu casa y para ir a la Uni, vas desde la Uni a tu Casa?&quot;</span>)</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> desde</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span> hasta</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> rectangulos</span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>    delta <span class="op">=</span> (b <span class="op">-</span> a) <span class="op">/</span> n</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>    sumatoria <span class="op">=</span> <span class="fl">0.0</span></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> [] <span class="co"># El almacen </span></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>        izq <span class="op">=</span> a <span class="op">+</span> k <span class="op">*</span> delta</span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>        der <span class="op">=</span> izq <span class="op">+</span> delta</span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>        <span class="co"># m_k = min(funcion(izq), funcion(der)) Nos oculta el valor de x ganador asi que toca reevaluar</span></span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>        f_izq <span class="op">=</span> funcion(izq)</span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>        f_der <span class="op">=</span> funcion(der)</span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>        m_k, x_ganador <span class="op">=</span> (f_izq, izq) <span class="cf">if</span> f_izq <span class="op">&lt;=</span> f_der <span class="cf">else</span> (f_der, der) <span class="co"># Según se cumpla la coindicion central, se asigna (la altura f_izq o f_der en m_k, x ganador izq o der en x_ganador)</span></span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>        sumatoria <span class="op">+=</span> m_k <span class="op">*</span> delta</span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>        data.append({<span class="st">&quot;Iteración&quot;</span>: k <span class="op">+</span> <span class="dv">1</span>, <span class="st">&quot;x evaluado&quot;</span>: <span class="bu">round</span>(x_ganador, <span class="dv">4</span>), <span class="st">&quot;f(x)&quot;</span>: <span class="bu">round</span>(m_k, <span class="dv">4</span>), <span class="st">&quot;Delta x&quot;</span>: <span class="bu">round</span>(delta, <span class="dv">4</span>), <span class="st">&quot;Área parcial&quot;</span>: <span class="bu">round</span>(m_k <span class="op">*</span> delta, <span class="dv">6</span>), <span class="st">&quot;Suma inferior hasta el momento&quot;</span>: <span class="bu">round</span>(sumatoria, <span class="dv">6</span>)}) <span class="co"># Para agregar al almacen</span></span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> sumatoria, data <span class="co"># Al almacen!</span></span></code></pre></div>
+</div>
+<div id="8516e53f-f7a0-40fe-a087-f282266f7085" class="cell markdown">
+<p><br></p>
+</div>
+<div id="a5039e84-0ed6-4af0-bad9-e07872ccb1a2" class="cell markdown">
+<h1 id="graficarlo">Graficarlo</h1>
+<hr />
+</div>
+<div id="a2d3ab49-725f-4001-b3d9-517fddfdbcea" class="cell code"
+data-execution_count="8">
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dash</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dash <span class="im">import</span> html, dcc</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dash_bootstrap_components <span class="im">as</span> dbc</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(x):</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x<span class="op">**</span><span class="dv">2</span> <span class="co"># Ponemos una función en formato que Python entienda</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>suma, data <span class="op">=</span> sumaInferior(f, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">10</span>)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>val_x <span class="op">=</span> [d[<span class="st">&quot;x evaluado&quot;</span>] <span class="cf">for</span> d <span class="kw">in</span> data] <span class="co"># bucle for que toma de data los x evaluado, para ser los x que grafiquemos</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>val_y <span class="op">=</span> [d[<span class="st">&quot;Suma inferior hasta el momento&quot;</span>] <span class="cf">for</span> d <span class="kw">in</span> data] <span class="co"># bucle for que toma de data los &quot;Suma inferior hasta el momento&quot;, para ser los y que grafiquemos</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>colores <span class="op">=</span> [<span class="st">&quot;blue&quot;</span>] <span class="op">*</span> (<span class="bu">len</span>(val_x) <span class="op">-</span> <span class="dv">1</span>) <span class="op">+</span> [<span class="st">&quot;orange&quot;</span>]</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>trazo <span class="op">=</span> go.Figure() <span class="co"># Creamos un objeto gráfico llamado trazo para guardar los datos y estilos del gráfico</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>trazo.add_trace(go.Scatter(x<span class="op">=</span>val_x, y<span class="op">=</span>val_y, mode<span class="op">=</span><span class="st">&quot;lines+markers&quot;</span>, marker<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span>colores, size<span class="op">=</span><span class="dv">8</span>), name<span class="op">=</span><span class="st">&quot;Suma inferior hasta el momento&quot;</span>)) <span class="co"># Agregamos los x e y unidos por lineas y le asignamos un nombre</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> dash.Dash(<span class="va">__name__</span>, external_stylesheets<span class="op">=</span>[dbc.themes.BOOTSTRAP]) <span class="co"># Creación de la Dash app con estilo bootstrap</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>grafico <span class="op">=</span> dcc.Graph(<span class="bu">id</span> <span class="op">=</span> <span class="st">&quot;grafico_plantilla&quot;</span>, figure<span class="op">=</span>trazo) <span class="co"># grafico pasando figura</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>app.layout <span class="op">=</span> html.Div([grafico]) <span class="co"># La web dash app con su contenido un grafico</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>:</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>    app.run(port<span class="op">=</span><span class="st">&quot;8073&quot;</span>, debug<span class="op">=</span><span class="va">False</span>) <span class="co"># Levantar web server para ejecutar la app</span></span></code></pre></div>
+<div class="output display_data">
+
+        <iframe
+            width="100%"
+            height="650"
+            src="http://127.0.0.1:8073/"
+            frameborder="0"
+            allowfullscreen
+            
+        ></iframe>
+        
+</div>
+</div>
+<div id="352ffddc-78c1-4b99-a743-0c93dc90392f" class="cell markdown">
+<p><br></p>
+</div>
+<div id="3493d919-edf6-492a-bd6a-2271660d1317" class="cell markdown">
+<h1 id="repetir-para-suma-superior">Repetir para Suma Superior</h1>
+<hr />
+</div>
+<div id="94b08c4d-3d5d-4591-9158-e08869efa579" class="cell code"
+data-execution_count="9">
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>entradas <span class="op">=</span> {</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;sen&quot;</span>: <span class="st">&quot;math.sin&quot;</span>,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;sin&quot;</span>: <span class="st">&quot;math.sin&quot;</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;cos&quot;</span>: <span class="st">&quot;math.cos&quot;</span>,</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;tan&quot;</span>: <span class="st">&quot;math.tan&quot;</span>,</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;e^&quot;</span>: <span class="st">&quot;math.exp&quot;</span>,</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;ln&quot;</span>: <span class="st">&quot;math.log&quot;</span>,</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;log&quot;</span>: <span class="st">&quot;math.log10&quot;</span>,</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;x^&quot;</span>: <span class="st">&quot;x**&quot;</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sanitizar(sintaxis):</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> clave, valor <span class="kw">in</span> entradas.items():</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>        sintaxis <span class="op">=</span> sintaxis.replace(clave, valor)</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> sintaxis</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sumaSuperior(funcion, desde, hasta, rectangulos):</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> rectangulos <span class="op">&lt;=</span> <span class="dv">0</span>:</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">&quot;En la primaria no te enseñaron que no podes dividir algo por cero?&quot;</span>)</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> hasta <span class="op">&lt;=</span> desde:</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">&quot;Estas en tu casa y para ir a la Uni, vas desde la Uni a tu Casa?&quot;</span>)</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> desde</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span> hasta</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> rectangulos</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>    delta <span class="op">=</span> (b <span class="op">-</span> a) <span class="op">/</span> n</span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>    sumatoria <span class="op">=</span> <span class="fl">0.0</span></span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> [] <span class="co"># El almacen </span></span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>        izq <span class="op">=</span> a <span class="op">+</span> k <span class="op">*</span> delta</span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>        der <span class="op">=</span> izq <span class="op">+</span> delta</span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>        <span class="co">#M_k = max(funcion(izq), funcion(der)) Nos oculta el valor de x ganador asi que toca reevaluar</span></span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>        f_izq <span class="op">=</span> funcion(izq)</span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>        f_der <span class="op">=</span> funcion(der)</span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>        M_k, x_ganador <span class="op">=</span> (f_izq, izq) <span class="cf">if</span> f_izq <span class="op">&gt;=</span> f_der <span class="cf">else</span> (f_der, der) <span class="co"># Según se cumpla la coindicion central, se asigna (la altura f_izq o f_der en M_k, x ganador izq o der en x_ganador)</span></span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a>        sumatoria <span class="op">+=</span> M_k <span class="op">*</span> delta</span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a>        data.append({<span class="st">&quot;Iteración&quot;</span>: k <span class="op">+</span> <span class="dv">1</span>, <span class="st">&quot;x evaluado&quot;</span>: <span class="bu">round</span>(x_ganador, <span class="dv">4</span>), <span class="st">&quot;f(x)&quot;</span>: <span class="bu">round</span>(M_k, <span class="dv">4</span>), <span class="st">&quot;Delta x&quot;</span>: <span class="bu">round</span>(delta, <span class="dv">4</span>), <span class="st">&quot;Área parcial&quot;</span>: <span class="bu">round</span>(M_k <span class="op">*</span> delta, <span class="dv">6</span>), <span class="st">&quot;Suma superior hasta el momento&quot;</span>: <span class="bu">round</span>(sumatoria, <span class="dv">6</span>)}) <span class="co"># Para agregar al almacen</span></span>
+<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> sumatoria, data <span class="co"># Al almacen</span></span></code></pre></div>
+</div>
+<div id="277fe3fe-718a-47fb-9215-386ea2c67920" class="cell markdown">
+<p><br></p>
+</div>
+<div id="a6595891-125d-445c-ab90-97590804d8c0" class="cell markdown">
+<h1 id="graficar-suma-superior">Graficar Suma Superior</h1>
+<hr />
+</div>
+<div id="64b3a8e6-17d9-45d3-b19a-e931d003fda3" class="cell code"
+data-execution_count="10">
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dash</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dash <span class="im">import</span> html, dcc</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dash_bootstrap_components <span class="im">as</span> dbc</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(x):</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x<span class="op">**</span><span class="dv">2</span> <span class="co"># Ponemos una función en formato que Python entienda</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>suma, data <span class="op">=</span> sumaSuperior(f, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">10</span>)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>val_x <span class="op">=</span> [d[<span class="st">&quot;x evaluado&quot;</span>] <span class="cf">for</span> d <span class="kw">in</span> data] <span class="co"># bucle for que toma de data los x evaluado, para ser los x que grafiquemos</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>val_y <span class="op">=</span> [d[<span class="st">&quot;Suma superior hasta el momento&quot;</span>] <span class="cf">for</span> d <span class="kw">in</span> data] <span class="co"># bucle for que toma de data los &quot;Suma inferior hasta el momento&quot;, para ser los y que grafiquemos</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>colores <span class="op">=</span> [<span class="st">&quot;blue&quot;</span>] <span class="op">*</span> (<span class="bu">len</span>(val_x) <span class="op">-</span> <span class="dv">1</span>) <span class="op">+</span> [<span class="st">&quot;orange&quot;</span>]</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>trazo <span class="op">=</span> go.Figure() <span class="co"># Creamos un objeto gráfico llamado trazo para guardar los datos y estilos del gráfico</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>trazo.add_trace(go.Scatter(x<span class="op">=</span>val_x, y<span class="op">=</span>val_y, mode<span class="op">=</span><span class="st">&quot;lines+markers&quot;</span>, marker<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span>colores, size<span class="op">=</span><span class="dv">8</span>), name<span class="op">=</span><span class="st">&quot;Suma superior hasta el momento&quot;</span>)) <span class="co"># Agregamos los x e y unidos por lineas y le asignamos un nombre</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> dash.Dash(<span class="va">__name__</span>, external_stylesheets<span class="op">=</span>[dbc.themes.BOOTSTRAP]) <span class="co"># Creación de la Dash app con estilo bootstrap</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>grafico <span class="op">=</span> dcc.Graph(<span class="bu">id</span> <span class="op">=</span> <span class="st">&quot;grafico_plantilla&quot;</span>, figure<span class="op">=</span>trazo) <span class="co"># grafico pasando figura</span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>app.layout <span class="op">=</span> html.Div([grafico]) <span class="co"># La web dash app con su contenido un grafico</span></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>:</span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>    app.run(port<span class="op">=</span><span class="st">&quot;8074&quot;</span>,debug<span class="op">=</span><span class="va">False</span>) <span class="co"># Levantar web server para ejecutar la app</span></span></code></pre></div>
+<div class="output display_data">
+
+        <iframe
+            width="100%"
+            height="650"
+            src="http://127.0.0.1:8074/"
+            frameborder="0"
+            allowfullscreen
+            
+        ></iframe>
+        
+</div>
+</div>
+<div id="fe637f20-6c9f-4f6e-95ee-d0303d177fb3" class="cell markdown">
+<p><br></p>
+</div>
+<div id="f6b98b04-1a3b-40f8-ae06-55e716d89361" class="cell markdown">
+<h1 id="ambas-en-la-misma-grafica">Ambas en la misma grafica</h1>
+<hr />
+</div>
+<div id="ada65c17-4280-45bd-8f54-f63aa1667d49" class="cell code"
+data-execution_count="11">
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dash</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dash <span class="im">import</span> html, dcc</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dash_bootstrap_components <span class="im">as</span> dbc</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(x):</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x<span class="op">**</span><span class="dv">2</span> <span class="co"># Ponemos una función en formato que Python entienda</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>suma, data <span class="op">=</span> sumaInferior(f, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">100</span>)</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>suma_S, data_S <span class="op">=</span> sumaSuperior(f, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">100</span>)</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>val_x <span class="op">=</span> [d[<span class="st">&quot;x evaluado&quot;</span>] <span class="cf">for</span> d <span class="kw">in</span> data] <span class="co"># bucle for que toma de data los x evaluado, para ser los x que grafiquemos</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>val_y <span class="op">=</span> [d[<span class="st">&quot;Suma inferior hasta el momento&quot;</span>] <span class="cf">for</span> d <span class="kw">in</span> data] <span class="co"># bucle for que toma de data los &quot;Suma inferior hasta el momento&quot;, para ser los y que grafiquemos</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>val_x_S <span class="op">=</span> [d[<span class="st">&quot;x evaluado&quot;</span>] <span class="cf">for</span> d <span class="kw">in</span> data_S] <span class="co"># bucle for que toma de data los x evaluado, para ser los x que grafiquemos</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>val_y_S <span class="op">=</span> [d[<span class="st">&quot;Suma superior hasta el momento&quot;</span>] <span class="cf">for</span> d <span class="kw">in</span> data_S] <span class="co"># bucle for que toma de data los &quot;Suma inferior hasta el momento&quot;, para ser los y que grafiquemos</span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>colores <span class="op">=</span> [<span class="st">&quot;blue&quot;</span>] <span class="op">*</span> (<span class="bu">len</span>(val_x) <span class="op">-</span> <span class="dv">1</span>) <span class="op">+</span> [<span class="st">&quot;orange&quot;</span>]</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>colores_S <span class="op">=</span> [<span class="st">&quot;green&quot;</span>] <span class="op">*</span> (<span class="bu">len</span>(val_x_S) <span class="op">-</span> <span class="dv">1</span>) <span class="op">+</span> [<span class="st">&quot;purple&quot;</span>]</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>trazo <span class="op">=</span> go.Figure() <span class="co"># Creamos un objeto gráfico llamado trazo para guardar los datos y estilos del gráfico</span></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>trazo.add_trace(go.Scatter(x<span class="op">=</span>val_x, y<span class="op">=</span>val_y, mode<span class="op">=</span><span class="st">&quot;markers&quot;</span>, line<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span><span class="st">&quot;blue&quot;</span>,dash<span class="op">=</span><span class="st">&quot;dash&quot;</span>), marker<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span>colores, size<span class="op">=</span><span class="dv">8</span>), name<span class="op">=</span><span class="st">&quot;Suma inferior hasta el momento&quot;</span>)) <span class="co"># Agregamos los x e y unidos por lineas y le asignamos un nombre</span></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>trazo.add_trace(go.Scatter(x<span class="op">=</span>val_x_S, y<span class="op">=</span>val_y_S, mode<span class="op">=</span><span class="st">&quot;markers&quot;</span>, marker<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span>colores_S, size<span class="op">=</span><span class="dv">8</span>), name<span class="op">=</span><span class="st">&quot;Suma superior hasta el momento&quot;</span>)) <span class="co"># Agregamos los x e y unidos por lineas y le asignamos un nombre</span></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> dash.Dash(<span class="va">__name__</span>, external_stylesheets<span class="op">=</span>[dbc.themes.BOOTSTRAP]) <span class="co"># Creación de la Dash app con estilo bootstrap</span></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>grafico <span class="op">=</span> dcc.Graph(<span class="bu">id</span> <span class="op">=</span> <span class="st">&quot;grafico_plantilla&quot;</span>, figure<span class="op">=</span>trazo) <span class="co"># grafico pasando figura</span></span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>app.layout <span class="op">=</span> html.Div([grafico]) <span class="co"># La web dash app con su contenido un grafico</span></span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>:</span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>    app.run(port<span class="op">=</span><span class="st">&quot;8075&quot;</span>,debug<span class="op">=</span><span class="va">False</span>) <span class="co"># Levantar web server para ejecutar la app</span></span></code></pre></div>
+<div class="output display_data">
+
+        <iframe
+            width="100%"
+            height="650"
+            src="http://127.0.0.1:8075/"
+            frameborder="0"
+            allowfullscreen
+            
+        ></iframe>
+        
+</div>
+</div>
+<div id="7b850611-7526-421e-991d-a09fcc7c52f7" class="cell markdown">
+<p><br></p>
+</div>
+<div id="c7bd7f98-21b2-4acb-a1ed-b2c6edeea4f6" class="cell markdown">
+<h1 id="mostrar-convergencia">Mostrar convergencia</h1>
+<hr />
+</div>
+<div id="25446fa8-e62d-47a9-88a1-95dbf25bb192" class="cell code"
+data-execution_count="12">
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dash</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dash <span class="im">import</span> html, dcc</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dash_bootstrap_components <span class="im">as</span> dbc</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(x):</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x<span class="op">**</span><span class="dv">2</span> <span class="co"># Ponemos una función en formato que Python entienda</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>N_max <span class="op">=</span> <span class="dv">50</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>valores_n <span class="op">=</span> []</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>suma_I_totales <span class="op">=</span> []</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>suma_S_totales <span class="op">=</span> []</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, N_max<span class="op">+</span><span class="dv">1</span>):</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    suma_I, _ <span class="op">=</span> sumaInferior(f, <span class="dv">0</span>, <span class="dv">2</span>, n)</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>    suma_S, _ <span class="op">=</span> sumaSuperior(f, <span class="dv">0</span>, <span class="dv">2</span>, n)</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>    valores_n.append(n)</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>    suma_I_totales.append(suma_I)</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>    suma_S_totales.append(suma_S)</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>trazo <span class="op">=</span> go.Figure() <span class="co"># Creamos un objeto gráfico llamado trazo para guardar los datos y estilos del gráfico</span></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>trazo.add_trace(go.Scatter(x<span class="op">=</span>valores_n, y<span class="op">=</span>suma_I_totales, mode<span class="op">=</span><span class="st">&quot;markers&quot;</span>, line<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span><span class="st">&quot;blue&quot;</span>,dash<span class="op">=</span><span class="st">&quot;dash&quot;</span>), marker<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span>colores, size<span class="op">=</span><span class="dv">8</span>), name<span class="op">=</span><span class="st">&quot;Suma inferior hasta el momento&quot;</span>)) <span class="co"># Agregamos los x e y unidos por lineas y le asignamos un nombre</span></span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>trazo.add_trace(go.Scatter(x<span class="op">=</span>valores_n, y<span class="op">=</span>suma_S_totales, mode<span class="op">=</span><span class="st">&quot;markers&quot;</span>, marker<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span>colores_S, size<span class="op">=</span><span class="dv">8</span>), name<span class="op">=</span><span class="st">&quot;Suma superior hasta el momento&quot;</span>)) <span class="co"># Agregamos los x e y unidos por lineas y le asignamos un nombre</span></span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>trazo.update_layout(title<span class="op">=</span><span class="st">&quot;Convergencia de Sumas Inferior y Superior&quot;</span>, xaxis_title <span class="op">=</span> <span class="st">&quot;Número de rectángulos (n)&quot;</span>, yaxis_title <span class="op">=</span> <span class="st">&quot;Suma acumulada&quot;</span>, template<span class="op">=</span><span class="st">&quot;plotly_white&quot;</span>)</span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> dash.Dash(<span class="va">__name__</span>, external_stylesheets<span class="op">=</span>[dbc.themes.BOOTSTRAP]) <span class="co"># Creación de la Dash app con estilo bootstrap</span></span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>grafico <span class="op">=</span> dcc.Graph(<span class="bu">id</span> <span class="op">=</span> <span class="st">&quot;grafico_plantilla&quot;</span>, figure<span class="op">=</span>trazo) <span class="co"># grafico pasando figura</span></span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>app.layout <span class="op">=</span> html.Div([grafico]) <span class="co"># La web dash app con su contenido un grafico</span></span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>:</span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a>    app.run(port<span class="op">=</span><span class="st">&quot;8076&quot;</span>,debug<span class="op">=</span><span class="va">False</span>) <span class="co"># Levantar web server para ejecutar la app</span></span></code></pre></div>
+<div class="output display_data">
+
+        <iframe
+            width="100%"
+            height="650"
+            src="http://127.0.0.1:8076/"
+            frameborder="0"
+            allowfullscreen
+            
+        ></iframe>
+        
+</div>
+</div>
+<script src="js/script.js"></script>
+<footer class="nav-footer">
+<a class="nav-btn" href="Teoria 1_ Creacion de tabla mediante Plotly Dash.html">⬅ Back</a>
+<a class="nav-btn" href="/amipyclub/">Home</a>
+<a class="nav-btn" href="Z_Ejemplo_ SmithChart_annotated.html">Next ➡</a>
+</footer>
+</body>
+</html>

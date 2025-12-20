@@ -1,6 +1,6 @@
 {
-    "name": "Webclub",
-    "short_name": "Webclub App",
+    "name": "Amipyclub",
+    "short_name": "Amipyclub App",
     "start_url": "../../archivos.html",
     "display": "standalone",
     "background_color": "#dc143c",
